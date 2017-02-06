@@ -1,4 +1,4 @@
-package com.doughepi.controllers.account;
+package com.doughepi.controllers;
 
 import org.springframework.stereotype.Controller;
 
