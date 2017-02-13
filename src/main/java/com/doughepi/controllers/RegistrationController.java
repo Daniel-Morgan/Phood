@@ -1,6 +1,8 @@
 package com.doughepi.controllers;
 
 import com.doughepi.models.UserModel;
+import com.doughepi.validation.RegistrationValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,10 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("user")
 public class RegistrationController
 {
+
+    @Autowired
+    RegistrationValidator registrationValidator;
+
     @RequestMapping
     public String initialPage(final Model model)
     {
@@ -32,6 +38,13 @@ public class RegistrationController
             final BindingResult bindingResult
     )
     {
+        //If the previous page has errors, return to the previous page.
+        registrationValidator.validateRegistration(userModel, bindingResult);
+        if (bindingResult.hasErrors())
+        {
+            return "/registration/register";
+        }
+
         return "/registration/register-2";
     }
 
@@ -42,8 +55,25 @@ public class RegistrationController
             final SessionStatus sessionStatus
     )
     {
-        sessionStatus.setComplete();
+        //If the previous page has errors, return to the previous page.
+        registrationValidator.validatePersonal(userModel, bindingResult);
+        if (bindingResult.hasErrors())
+        {
+            return "/registration/register-2";
+        }
+
         return "/registration/register-3";
+    }
+
+    @RequestMapping(params = "_confirm")
+    public String processConfirm(
+            final @ModelAttribute("user") UserModel userModel,
+            final SessionStatus sessionStatus
+    )
+    {
+        //If the user clicks confirm, save the account and redirect to the root page.
+        sessionStatus.setComplete();
+        return "redirect:/";
     }
 
     @RequestMapping(params = "_cancel")

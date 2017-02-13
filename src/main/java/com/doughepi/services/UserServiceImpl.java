@@ -45,4 +45,16 @@ public class UserServiceImpl implements UserService
         }
 
     }
+
+    @Override
+    public UserModel findByUsername(String username)
+    {
+        return userRepository.findByUserUsername(username);
+    }
+
+    @Override
+    public UserModel findByEmail(String email)
+    {
+        return userRepository.findByUserEmail(email);
+    }
 }
