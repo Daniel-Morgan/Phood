@@ -1,11 +1,14 @@
 package com.doughepi.services;
 
 import com.doughepi.models.UserModel;
+import com.doughepi.repositories.RoleRepository;
 import com.doughepi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +20,12 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService
 {
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     Logger logger = Logger.getLogger(getClass().getName());
 
@@ -56,5 +65,13 @@ public class UserServiceImpl implements UserService
     public UserModel findByEmail(String email)
     {
         return userRepository.findByUserEmail(email);
+    }
+
+    @Override
+    public void save(UserModel userModel)
+    {
+        userModel.setUserPassword(bCryptPasswordEncoder.encode(userModel.getUserPassword()));
+        userModel.setRoleSet(new HashSet<>());
+        userRepository.save(userModel);
     }
 }

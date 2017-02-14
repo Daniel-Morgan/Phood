@@ -73,7 +73,7 @@ public class RegistrationController
     {
         //If the user clicks confirm, save the account and redirect to the root page.
         sessionStatus.setComplete();
-        return "redirect:/";
+        return "index";
     }
 
     @RequestMapping(params = "_cancel")
