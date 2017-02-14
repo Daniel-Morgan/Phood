@@ -13,5 +13,5 @@ public interface UserService
 
     UserModel findByEmail(String email);
 
-    void save(UserModel userModel);
+    UserModel save(UserModel userModel);
 }

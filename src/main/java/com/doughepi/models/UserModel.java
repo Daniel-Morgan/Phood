@@ -1,6 +1,7 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,10 +11,11 @@ import java.util.UUID;
  * Created by dough on 1/30/2017.
  */
 @Entity
-@Table(name = "user")
+@Table(name = "\"user\"")
 public class UserModel
 {
     //Primary key for Hibernate.
+    @Type(type = "pg-uuid")
     private UUID userID;
 
     //User login information.
@@ -27,22 +29,13 @@ public class UserModel
     private String userMiddleInitial;
     private String userLastName;
 
+
+    //Used for testing.
+    @Type(type = "pg-uuid")
+    private UUID other;
+
     //User assigned roles.
     private Set<RoleModel> roleSet;
-
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "userID")
-    public UUID getUserID()
-    {
-        return userID;
-    }
-
-    public void setUserID(UUID userID)
-    {
-        this.userID = userID;
-    }
 
     @Column(name = "userUsername")
     public String getUserUsername()
@@ -131,5 +124,36 @@ public class UserModel
     public void setRoleSet(Set<RoleModel> roleSet)
     {
         this.roleSet = roleSet;
+    }
+
+    @Column(name = "other")
+    public UUID getOther()
+    {
+        return other;
+    }
+
+    public void setOther(UUID other)
+    {
+        this.other = other;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return obj instanceof UserModel && ((UserModel) obj).getUserID().equals(getUserID());
+    }
+
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "userID")
+    public UUID getUserID()
+    {
+        return userID;
+    }
+
+    public void setUserID(UUID userID)
+    {
+        this.userID = userID;
     }
 }

@@ -68,10 +68,10 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public void save(UserModel userModel)
+    public UserModel save(UserModel userModel)
     {
         userModel.setUserPassword(bCryptPasswordEncoder.encode(userModel.getUserPassword()));
         userModel.setRoleSet(new HashSet<>());
-        userRepository.save(userModel);
+        return userRepository.save(userModel);
     }
 }

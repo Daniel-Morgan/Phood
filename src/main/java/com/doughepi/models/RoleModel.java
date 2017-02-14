@@ -1,6 +1,7 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Table(name = "role")
 public class RoleModel
 {
+    @Type(type = "pg-uuid")
     private UUID roleID;
     private String roleName;
     private Set<UserModel> userModelSet;
