@@ -36,7 +36,6 @@ public class UserAccountTests
     @Autowired
     RegistrationValidator registrationValidator;
 
-
     @Before
     public void setUp() throws Exception
     {
