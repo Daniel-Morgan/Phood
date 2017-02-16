@@ -23,13 +23,14 @@ import java.util.UUID;
 public class UserAccountTests
 {
 
-    private static final UUID TEST_ACCOUNT_ID = UUID.fromString("b6125374-4ec2-4960-9e0a-bdf50238c039");
+    static final UUID TEST_ACCOUNT_ID = UUID.fromString("b6125374-4ec2-4960-9e0a-bdf50238c039");
     private static final String TEST_ACCOUNT_USERNAME = "doughepi";
     private static final String TEST_ACCOUNT_EMAIL = "doughertypiper@gmail.com";
     private static final String TEST_ACCOUNT_PASSWORD = "password";
     private static final String TEST_ACCOUNT_FIRST_NAME = "Piper";
     private static final String TEST_ACCOUNT_MIDDLE_INITIAL = "J";
     private static final String TEST_ACCOUNT_LAST_NAME = "Dougherty";
+
     @Autowired
     RegistrationValidator registrationValidator;
     @Autowired

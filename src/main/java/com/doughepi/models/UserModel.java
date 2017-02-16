@@ -1,7 +1,6 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +14,6 @@ import java.util.UUID;
 public class UserModel
 {
     //Primary key for Hibernate.
-    @Type(type = "pg-uuid")
     private UUID userID;
 
     //User login information.
@@ -31,7 +29,6 @@ public class UserModel
 
 
     //Used for testing.
-    @Type(type = "pg-uuid")
     private UUID other;
 
     //User assigned roles.
