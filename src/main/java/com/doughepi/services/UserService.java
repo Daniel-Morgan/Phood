@@ -7,7 +7,6 @@ import com.doughepi.models.UserModel;
  */
 public interface UserService
 {
-    void printAllUserData();
 
     UserModel findByUsername(String username);
 

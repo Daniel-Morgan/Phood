@@ -20,10 +20,22 @@ import org.springframework.web.bind.support.SessionStatus;
 public class RegistrationController
 {
 
+    private final RegistrationValidator registrationValidator;
+
     @Autowired
-    RegistrationValidator registrationValidator;
+    public RegistrationController(RegistrationValidator registrationValidator)
+    {
+        this.registrationValidator =
+                registrationValidator;
+    }
 
     @RequestMapping
+    public String paramRedirect()
+    {
+        return "redirect:/register?page=1";
+    }
+
+    @RequestMapping(params = "page=1")
     public String initialPage(final Model model)
     {
         //Insert a blank user into the model for the registration page.

@@ -7,12 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.HashSet;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 /**
  * Created by dough on 2017-02-06.
@@ -21,38 +16,19 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService
 {
 
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final RoleRepository roleRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
-
-    Logger logger = Logger.getLogger(getClass().getName());
-
-    @Autowired
-    UserRepository userRepository;
-
-
-    @Override
-    public void printAllUserData()
+    public UserServiceImpl(
+            BCryptPasswordEncoder bCryptPasswordEncoder,
+            RoleRepository roleRepository,
+            UserRepository userRepository)
     {
-        List<UserModel> userModelList = userRepository.findAll().stream().sorted(
-                Comparator.comparing(UserModel::getUserLastName)
-        ).collect(Collectors.toList());
-
-
-        for (UserModel userModel : userModelList)
-        {
-            logger.log(Level.INFO, String.format(
-                    "%s %s %s %s %s %s",
-                    userModel.getUserID(),
-                    userModel.getUserUsername(),
-                    userModel.getUserEmail(),
-                    userModel.getUserFirstName(),
-                    userModel.getUserMiddleInitial(),
-                    userModel.getUserLastName()));
-        }
-
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.roleRepository = roleRepository;
+        this.userRepository = userRepository;
     }
 
     @Override

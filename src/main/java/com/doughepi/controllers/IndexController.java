@@ -24,7 +24,6 @@ public class IndexController
     @RequestMapping
     public String showIndex()
     {
-        userService.printAllUserData();
         return "index";
     }
 }
