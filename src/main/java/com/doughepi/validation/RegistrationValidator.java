@@ -4,7 +4,6 @@ import com.doughepi.models.UserModel;
 import com.doughepi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -81,7 +80,9 @@ public class RegistrationValidator implements Validator
                 if (userService.findByUsername(username) != null)
                 {
                     errors.rejectValue("userUsername", "Registration.usernameTaken");
-                } else if (userService.findByEmail(email) != null)
+                }
+
+                if (userService.findByEmail(email) != null)
                 {
                     errors.rejectValue("userEmail", "Registration.emailTaken");
                 }
@@ -99,10 +100,10 @@ public class RegistrationValidator implements Validator
         }
     }
 
-    public void validateRegistration(UserModel userModel, BindingResult bindingResult)
+    public void validateRegistration(UserModel userModel, Errors errors)
     {
         setPage(PageEnum.REGISTRATION_PAGE);
-        validate(userModel, bindingResult);
+        validate(userModel, errors);
     }
 
     private void setPage(PageEnum pageEnum)
@@ -110,10 +111,10 @@ public class RegistrationValidator implements Validator
         this.pageEnum = pageEnum;
     }
 
-    public void validatePersonal(UserModel userModel, BindingResult bindingResult)
+    public void validatePersonal(UserModel userModel, Errors errors)
     {
         setPage(PageEnum.PERSONAL_DETAILS_PAGE);
-        validate(userModel, bindingResult);
+        validate(userModel, errors);
     }
 
     private enum PageEnum

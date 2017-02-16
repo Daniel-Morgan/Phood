@@ -7,12 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.HashSet;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 /**
  * Created by dough on 2017-02-06.
@@ -21,38 +17,19 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService
 {
 
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final RoleRepository roleRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
-
-    Logger logger = Logger.getLogger(getClass().getName());
-
-    @Autowired
-    UserRepository userRepository;
-
-
-    @Override
-    public void printAllUserData()
+    public UserServiceImpl(
+            BCryptPasswordEncoder bCryptPasswordEncoder,
+            RoleRepository roleRepository,
+            UserRepository userRepository)
     {
-        List<UserModel> userModelList = userRepository.findAll().stream().sorted(
-                Comparator.comparing(UserModel::getUserLastName)
-        ).collect(Collectors.toList());
-
-
-        for (UserModel userModel : userModelList)
-        {
-            logger.log(Level.INFO, String.format(
-                    "%s %s %s %s %s %s",
-                    userModel.getUserID(),
-                    userModel.getUserUsername(),
-                    userModel.getUserEmail(),
-                    userModel.getUserFirstName(),
-                    userModel.getUserMiddleInitial(),
-                    userModel.getUserLastName()));
-        }
-
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.roleRepository = roleRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -68,10 +45,31 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public void save(UserModel userModel)
+    public UserModel createTestUser(
+            UUID testAccountId,
+            String testAccountUsername,
+            String testAccountPassword,
+            String testAccountEmail,
+            String testAccountFirstName,
+            String testAccountMiddleInitial,
+            String testAccountLastName)
+    {
+        UserModel userModel = new UserModel();
+        userModel.setUserID(testAccountId);
+        userModel.setUserUsername(testAccountUsername);
+        userModel.setUserPassword(testAccountPassword);
+        userModel.setUserEmail(testAccountEmail);
+        userModel.setUserFirstName(testAccountFirstName);
+        userModel.setUserMiddleInitial(testAccountMiddleInitial);
+        userModel.setUserLastName(testAccountLastName);
+        return userModel;
+    }
+
+    @Override
+    public UserModel save(UserModel userModel)
     {
         userModel.setUserPassword(bCryptPasswordEncoder.encode(userModel.getUserPassword()));
         userModel.setRoleSet(new HashSet<>());
-        userRepository.save(userModel);
+        return userRepository.save(userModel);
     }
 }

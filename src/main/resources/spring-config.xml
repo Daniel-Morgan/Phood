@@ -17,7 +17,7 @@
     <!--PERSISTENCE MANAGEMENT_______________________________________________________________________________________-->
     <jpa:repositories base-package="com.doughepi"/>
 
-    <bean id="dataSource" primary="true" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" primary="true" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url" value="${spring.datasource.url}"/>
         <property name="username" value="${spring.datasource.username}"/>
