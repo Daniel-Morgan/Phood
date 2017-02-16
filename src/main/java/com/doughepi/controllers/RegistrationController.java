@@ -41,7 +41,7 @@ public class RegistrationController
         //Insert a blank user into the model for the registration page.
         UserModel userModel = new UserModel();
         model.addAttribute("user", userModel);
-        return "/registration/register";
+        return "/registration/register-1";
     }
 
     @RequestMapping(params = "page=2")
@@ -54,7 +54,7 @@ public class RegistrationController
         registrationValidator.validateRegistration(userModel, bindingResult);
         if (bindingResult.hasErrors())
         {
-            return "/registration/register";
+            return "/registration/register-1";
         }
 
         return "/registration/register-2";

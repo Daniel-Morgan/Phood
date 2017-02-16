@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BeanPropertyBindingResult;
@@ -37,12 +38,19 @@ public class RegistrationValidationTests
     UserModel validUser;
     Errors errors;
 
+    @Value("${validation}")
+    private boolean validationEnabled;
+
     @Before
     public void setUp() throws Exception
     {
+        if (!validationEnabled)
+        {
+            Assert.fail("Validation is disabled, these tests cannot run. Switch validation back on in the application" +
+                                ".properties file.");
+        }
         validUser = userRepository.findOne(UserAccountTests.TEST_ACCOUNT_ID);
         validUser.setUserConfirmationPassword("password");
-
         errors = new BeanPropertyBindingResult(validUser, "validUser");
     }
 

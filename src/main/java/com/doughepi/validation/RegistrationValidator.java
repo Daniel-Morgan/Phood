@@ -3,6 +3,7 @@ package com.doughepi.validation;
 import com.doughepi.models.UserModel;
 import com.doughepi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -14,6 +15,9 @@ import org.springframework.validation.Validator;
 @Component
 public class RegistrationValidator implements Validator
 {
+
+    @Value("${validation}")
+    private boolean validationEnabled;
 
     @Autowired
     private UserService userService;
@@ -29,6 +33,11 @@ public class RegistrationValidator implements Validator
     @Override
     public void validate(Object o, Errors errors)
     {
+        if (!validationEnabled)
+        {
+            return;
+        }
+
         UserModel userModel = ((UserModel) o);
 
         switch (pageEnum)
