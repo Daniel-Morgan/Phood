@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.UUID;
 
 /**
  * Created by dough on 2017-02-06.
@@ -41,6 +42,27 @@ public class UserServiceImpl implements UserService
     public UserModel findByEmail(String email)
     {
         return userRepository.findByUserEmail(email);
+    }
+
+    @Override
+    public UserModel createTestUser(
+            UUID testAccountId,
+            String testAccountUsername,
+            String testAccountPassword,
+            String testAccountEmail,
+            String testAccountFirstName,
+            String testAccountMiddleInitial,
+            String testAccountLastName)
+    {
+        UserModel userModel = new UserModel();
+        userModel.setUserID(testAccountId);
+        userModel.setUserUsername(testAccountUsername);
+        userModel.setUserPassword(testAccountPassword);
+        userModel.setUserEmail(testAccountEmail);
+        userModel.setUserFirstName(testAccountFirstName);
+        userModel.setUserMiddleInitial(testAccountMiddleInitial);
+        userModel.setUserLastName(testAccountLastName);
+        return userModel;
     }
 
     @Override

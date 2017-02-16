@@ -26,21 +26,33 @@ public class UserAccountTests
     private static final UUID TEST_ACCOUNT_ID = UUID.fromString("b6125374-4ec2-4960-9e0a-bdf50238c039");
     private static final String TEST_ACCOUNT_USERNAME = "doughepi";
     private static final String TEST_ACCOUNT_EMAIL = "doughertypiper@gmail.com";
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    UserRepository userRepository;
-
+    private static final String TEST_ACCOUNT_PASSWORD = "password";
+    private static final String TEST_ACCOUNT_FIRST_NAME = "Piper";
+    private static final String TEST_ACCOUNT_MIDDLE_INITIAL = "J";
+    private static final String TEST_ACCOUNT_LAST_NAME = "Dougherty";
     @Autowired
     RegistrationValidator registrationValidator;
+    @Autowired
+    private
+    UserService userService;
+    @Autowired
+    private
+    UserRepository userRepository;
 
     @Before
     public void setUp() throws Exception
     {
-
-
+        UserModel testUser = userRepository.findOne(TEST_ACCOUNT_ID);
+        if (testUser == null)
+        {
+            userService.createTestUser(TEST_ACCOUNT_ID,
+                                       TEST_ACCOUNT_USERNAME,
+                                       TEST_ACCOUNT_PASSWORD,
+                                       TEST_ACCOUNT_EMAIL,
+                                       TEST_ACCOUNT_FIRST_NAME,
+                                       TEST_ACCOUNT_MIDDLE_INITIAL,
+                                       TEST_ACCOUNT_LAST_NAME);
+        }
     }
 
     @After
