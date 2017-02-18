@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by ajreicha on 2/18/17.
  */
 @Controller
-@RequestMapping(name = "/profile", method = RequestMethod.GET)
+@RequestMapping(value = "/profile", method = RequestMethod.GET)
 public class ProfileController {
 
     @RequestMapping
