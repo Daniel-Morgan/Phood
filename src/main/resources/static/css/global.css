@@ -21,12 +21,3 @@
     height:20px;
     background-color: black;
 }
-
-.reicpe-header-wrapper h3 {
-    font-family: 'Roboto', sans-serif;
-}
-
-.recipe-object {
-    padding: 10px 0 10px 0;
-    background-color: rgba(194, 194, 194, 0.51);
-}
