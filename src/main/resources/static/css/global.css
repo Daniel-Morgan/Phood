@@ -1,0 +1,18 @@
+.container-fluid{
+    padding: 50px;
+}
+
+#user-name {
+    color: #c2c2c2;
+    font-family: 'Roboto', sans-serif;
+}
+
+#full-name {
+    font-family: 'Roboto', sans-serif;
+}
+
+.black-bar{
+    border-style:solid;
+    border-width:3px;
+    border-color: #292b2c;
+}

@@ -15,7 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
  * Created by dough on 1/30/2017.
  */
 @Controller
-@RequestMapping("/register")
+@RequestMapping(value = "/register")
 @SessionAttributes("user")
 public class RegistrationController
 {

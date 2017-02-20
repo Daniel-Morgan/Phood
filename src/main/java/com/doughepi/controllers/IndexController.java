@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by dough on 1/30/2017.
  */
 @Controller
-@RequestMapping(name = "/", method = RequestMethod.GET)
+@RequestMapping(value = "/", method = RequestMethod.GET)
 public class IndexController
 {
     @Autowired
