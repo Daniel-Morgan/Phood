@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Phood | Create an account</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
 </head>
 <body>
+<div id="registrationform">
+
+    <div id="" class="container-fluid">
+        <div id="rowTest" class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <form action="/register?page=2" method="post">
+                    <div class="form-group">
+                        <label for="inputUserName">Username</label>
+                        <input type="username" class="form-control" id="inputUserName" placeholder="Username"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputConfirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="inputConfirmPassword"
+                               placeholder="Confirm Password"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                </form><!--end of form-->
+
+            </div><!--end of col-->
+        </div><!--end of row-->
+    </div><!--end of container fluid-->
+</div>
 
 </body>
 </html>
