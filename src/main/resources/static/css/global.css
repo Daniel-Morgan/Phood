@@ -1,14 +1,20 @@
 .container-fluid{
     padding: 50px;
+    font-family: "Roboto";
 }
 
-#user-name {
+
+.user-name {
     color: #c2c2c2;
-    font-family: 'Roboto', sans-serif;
 }
 
-#full-name {
-    font-family: 'Roboto', sans-serif;
+.full-name {
+
+}
+
+.header {
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
 .black-bar{
