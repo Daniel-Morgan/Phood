@@ -17,23 +17,26 @@
                 <form action="/register?page=2" method="post" th:object="${user}">
                     <div class="form-group">
                         <label for="inputUserName">Username</label>
-                        <input type="username" class="form-control" id="inputUserName" placeholder="Username" th:field="*{userUsername}"/>
+                        <input type="text" class="form-control" id="inputUserName"
+                               placeholder="Username" th:field="*{userUsername}" required="required"/>
                     </div>
 
                     <div class="form-group">
                         <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password"/>
+                        <input type="password" class="form-control" id="inputPassword"
+                               placeholder="Password" th:field="*{userPassword}" required="required"/>
                     </div>
 
                     <div class="form-group">
                         <label for="inputConfirmPassword">Confirm Password</label>
                         <input type="password" class="form-control" id="inputConfirmPassword"
-                               placeholder="Confirm Password"/>
+                               placeholder="Confirm Password" th:field="*{userConfirmationPassword}" required="required"/>
                     </div>
 
                     <div class="form-group">
                         <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email"/>
+                        <input type="email" class="form-control" id="inputEmail"
+                               placeholder="Email" th:field="*{userEmail}" required="required"/>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
