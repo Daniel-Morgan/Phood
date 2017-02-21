@@ -12,20 +12,27 @@
 
     <div id="" class="container-fluid">
         <div id="rowTest" class="row">
-            << class="col-lg-6 offset-lg-3">
             <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
-            <form action="/login" method="post">
+            <div class="col-lg-4 offset-lg-4">
+                <form action="/login" method="post">
 
-                <label><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required="required"/>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" placeholder="Enter Username" name="uname"
+                               required="required"/>
+                    </div>
 
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required="required"/>
+                    <div class="form-group">
+                        <label for="passwordField">Password</label>
+                        <input id="passwordField" class="form-control" type="password" placeholder="Enter Password"
+                               name="psw"
+                               required="required"/>
+                    </div>
 
-                <button type="submit">Login</button>
+                    <button class="btn btn-success" type="submit">Login</button>
 
-            </form><!--end of form-->
-
+                </form><!--end of form-->
+            </div>
         </div><!--end of col-->
     </div><!--end of row-->
 </div><!--end of col-->
