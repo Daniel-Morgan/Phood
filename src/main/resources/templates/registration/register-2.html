@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Phood | Edit your personal information</title>
+    <title>Phood | Create an account</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
 </head>
 <body>
+<div id="registrationform">
+
+    <div id="" class="container-fluid">
+        <div id="rowTest" class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
+                <form action="/register?page=3" method="post" th:object="${user}">
+
+
+                    <button type="submit" class="btn btn-primary">Next</button>
+                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                </form><!--end of form-->
+
+            </div><!--end of col-->
+        </div><!--end of row-->
+    </div><!--end of container fluid hi-->
+</div>
 
 </body>
 </html>
