@@ -20,7 +20,7 @@ public class RoleModel
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "roleID")
+    @Column(name = "roleid")
     public UUID getRoleID()
     {
         return roleID;
@@ -31,7 +31,7 @@ public class RoleModel
         this.roleID = roleID;
     }
 
-    @Column(name = "roleName")
+    @Column(name = "rolename")
     public String getRoleName()
     {
         return roleName;
