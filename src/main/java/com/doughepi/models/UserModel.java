@@ -153,4 +153,10 @@ public class UserModel
     {
         this.userID = userID;
     }
+
+    @Override
+    public String toString() {
+        return String.format("[UUID: %s, Username: %s, Email: %s, FirstName: %s, LastName: %s]",
+                getUserID(), getUserUsername(), getUserEmail(), getUserFirstName(), getUserLastName());
+    }
 }
