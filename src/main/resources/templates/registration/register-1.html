@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Phood | Create an account</title>
@@ -13,10 +13,11 @@
     <div id="" class="container-fluid">
         <div id="rowTest" class="row">
             <div class="col-lg-6 offset-lg-3">
-                <form action="/register?page=2" method="post">
+                <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
+                <form action="/register?page=2" method="post" th:object="${user}">
                     <div class="form-group">
                         <label for="inputUserName">Username</label>
-                        <input type="username" class="form-control" id="inputUserName" placeholder="Username"/>
+                        <input type="username" class="form-control" id="inputUserName" placeholder="Username" th:field="*{userUsername}"/>
                     </div>
 
                     <div class="form-group">
