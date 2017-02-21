@@ -16,6 +16,23 @@
                 <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
                 <form action="/register?page=3" method="post" th:object="${user}">
 
+                    <div class="form-group">
+                        <label for="inputFirstName">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName"
+                               placeholder="First Name" th:field="*{userFirstName}" required="required"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputMiddleInitial">Middle Initial</label>
+                        <input type="text" class="form-control" id="inputMiddleInitial"
+                               placeholder="Middle Initial" th:field="*{userMiddleInitial}" required="required"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputLastName">Last Name</label>
+                        <input type="text" class="form-control" id="inputLastName"
+                               placeholder="Last Name" th:field="*{userLastName}" required="required"/>
+                    </div>
 
                     <button type="submit" class="btn btn-primary">Next</button>
                     <button type="cancel" class="btn btn-danger">Cancel</button>
