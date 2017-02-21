@@ -1,6 +1,5 @@
 .container-fluid{
     padding: 50px;
-    font-family: "Roboto";
 }
 
 
@@ -21,4 +20,8 @@
     border-style:solid;
     border-width:3px;
     border-color: #292b2c;
+}
+
+#rowTest {
+    margin-top: 200px;
 }
