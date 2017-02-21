@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
 </head>
 <body>
+<div id="loginform">
 
+    <div id="" class="container-fluid">
+        <div id="rowTest" class="row">
+            << class="col-lg-6 offset-lg-3">
+            <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
+            <form action="/login" method="post">
+
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required="required"/>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required="required"/>
+
+                <button type="submit">Login</button>
+
+            </form><!--end of form-->
+
+        </div><!--end of col-->
+    </div><!--end of row-->
+</div><!--end of col-->
 </body>
 </html>
