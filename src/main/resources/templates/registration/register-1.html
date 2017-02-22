@@ -17,7 +17,7 @@
                 <form action="/register?page=2" method="post" th:object="${user}">
                     <div class="form-group">
                         <label for="inputUserName">Username</label>
-                        <input type="text" class="form-control" id="inputUserName"
+                        <input type="text" class="form-control" id="inputUserName" maxlength="24"
                                placeholder="Username" th:field="*{userUsername}" required="required"/>
                     </div>
 
