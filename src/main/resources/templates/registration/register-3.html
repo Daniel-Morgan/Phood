@@ -1,23 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Phood | Confirm your registration</title>
+    <title>Phood | Create an account</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12">
-            <div id="name-wrapper">
+<div id="registrationform">
+
+    <div id="" class="container-fluid">
+        <div id="rowTest" class="row">
+            <div class="col-lg-6 offset-lg-3">
                 <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
-                <h3 class="full-name">Confirm profile details</h3>
-            </div>
-            <hr class="black-bar"/>
-        </div>
-    </div>
+                <form action="/register?page=3" method="post" th:object="${user}">
+
+                    <div class="form-group">
+                        <label for="inputUserName">Username</label>
+                        <p id="inputUserName" class="form-control-static" th:text="${user.userUsername}"></p>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <p id="inputEmail" class="form-control-static" th:text="${user.userEmail}"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputFirstName">First Name</label>
+                        <p id="inputFirstName" class="form-control-static" th:text="${user.userFirstName}"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputMiddleInitial">Middle Initial</label>
+                        <p id="inputMiddleInitial" class="form-control-static" th:text="${user.userMiddleInitial}"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputLastName">Last Name</label>
+                        <p id="inputLastName" class="form-control-static" th:text="${user.userLastName}"></p>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Confirm</button>
+                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                </form><!--end of form-->
+
+            </div><!--end of col-->
+        </div><!--end of row-->
+    </div><!--end of container fluid hi-->
 </div>
+
 </body>
 </html>
