@@ -1,6 +1,7 @@
 package com.doughepi.controllers;
 
 import com.doughepi.models.UserModel;
+import com.doughepi.services.UserService;
 import com.doughepi.validation.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ import java.util.logging.Logger;
 @RequestMapping(value = "/register")
 @SessionAttributes("user")
 public class RegistrationController {
+
+    @Autowired
+    UserService userService;
 
     private final RegistrationValidator registrationValidator;
     Logger logger = Logger.getLogger(getClass().getName());
@@ -84,6 +88,7 @@ public class RegistrationController {
             final SessionStatus sessionStatus
     ) {
         //If the user clicks confirm, save the account and redirect to the root page.
+        userService.save(userModel);
         sessionStatus.setComplete();
         return "index";
     }
