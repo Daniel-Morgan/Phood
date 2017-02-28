@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -19,6 +20,7 @@ public class RecipeModel {
     private String recipeName;
     private String recipeDescription;
     private String recipeCatagory;
+    private List<IngredientModel> ingredientModel;
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -86,4 +88,14 @@ public class RecipeModel {
     public void setRecipeCatagory(String recipeCatagory) {
         this.recipeCatagory = recipeCatagory;
     }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipeID")
+    public List<IngredientModel> getIngredientModel() {
+        return ingredientModel;
+    }
+
+    public void setIngredientModel(List<IngredientModel> ingredientModel) {
+        this.ingredientModel = ingredientModel;
+    }
+
 }
