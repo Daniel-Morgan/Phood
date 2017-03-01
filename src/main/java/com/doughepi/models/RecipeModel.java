@@ -19,7 +19,7 @@ public class RecipeModel {
     private Date creationDate;
     private String recipeName;
     private String recipeDescription;
-    private String recipeCatagory;
+    private String recipeCategory;
     private List<IngredientModel> ingredientModel;
 
     @Id
@@ -80,13 +80,13 @@ public class RecipeModel {
         this.recipeDescription = recipeDescription;
     }
 
-    @Column(name = "recipecatagory")
-    public String getRecipeCatagory() {
-        return recipeCatagory;
+    @Column(name = "recipecategory")
+    public String getRecipeCategory() {
+        return recipeCategory;
     }
 
-    public void setRecipeCatagory(String recipeCatagory) {
-        this.recipeCatagory = recipeCatagory;
+    public void setRecipeCategory(String recipeCategory) {
+        this.recipeCategory = recipeCategory;
     }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipeID")

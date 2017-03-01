@@ -3,6 +3,7 @@ package com.doughepi.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -33,6 +34,9 @@ public class UserModel
 
     //User assigned roles.
     private Set<RoleModel> roleSet;
+
+    // Foreign key linking recipes to the user
+    private List<RecipeModel> recipeModels;
 
     @Column(name = "userUsername")
     public String getUserUsername()
@@ -152,6 +156,15 @@ public class UserModel
     public void setUserID(UUID userID)
     {
         this.userID = userID;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userID")
+    public List<RecipeModel> getRecipeModels() {
+        return recipeModels;
+    }
+
+    public void setRecipeModels(List<RecipeModel> recipeModels) {
+        this.recipeModels = recipeModels;
     }
 
     @Override
