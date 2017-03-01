@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Phood | Create a recipe</title>
@@ -13,22 +13,22 @@
     <div id="" class="container-fluid">
         <div id="rowTest" class="row">
             <div class="col-lg-6 offset-lg-3">
-                <form action="/recipe/new" method="post" th:object="${recipe}">
+                <form action="/recipe/new" method="post">
 
                     <div class="form-group">
                         <label for="inputRecipeName">Recipe Name</label>
                         <input type="text" class="form-control" id="inputRecipeName"
-                               placeholder="Recipe Name" th:field="*{setRecipeName}" required="required"/>
+                               placeholder="Recipe Name" required="required"/>
 
                         <label for="inputRecipeDescription">Recipe Description</label>
                         <input type="text" class="form-control" id="inputRecipeDescription"
-                               placeholder="Recipe Description" th:field="*{setRecipeDescription}" required="required"/>
+                               placeholder="Recipe Description" required="required"/>
                     </div>
 
                     <div class="form-group">
                         <label for="inputRecipeCategory">Recipe Category</label>
                         <input type="text" class="form-control" id="inputRecipeCategory"
-                               placeholder="Recipe Category" th:field="*{setRecipeCatagory}" required="required"/>
+                               placeholder="Recipe Category" required="required"/>
                     </div>
 
                     <p>Ingredients</p>
