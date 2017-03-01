@@ -9,19 +9,16 @@
 </head>
 <body>
 <div id="loginform">
-
     <div id="" class="container-fluid">
         <div id="rowTest" class="row">
             <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
             <div class="col-lg-4 offset-lg-4">
-                <form action="/login" method="post">
-
+                <form action="/login" method="post" style="display: inline;">
                     <div class="form-group">
                         <label>Username</label>
                         <input type="text" class="form-control" placeholder="Enter Username" name="uname"
                                required="required"/>
                     </div>
-
                     <div class="form-group">
                         <label for="passwordField">Password</label>
                         <input id="passwordField" class="form-control" type="password" placeholder="Enter Password"
@@ -29,11 +26,13 @@
                                required="required"/>
                     </div>
                     <button class="btn btn-success" type="submit">Login</button>
+                </form>
+                <form action="/" style="display: inline;">
                     <button type="cancel" class="btn btn-danger">Cancel</button>
-                </form><!--end of form-->
-                <form action="/register" style="margin-top: 1rem;">
+                </form>
+                <form action="/register" style="display: inline;">
                     <input type="submit" class="btn btn-primary" value="Create Account"/>
-                </form><!--end of form-->
+                </form>
             </div>
         </div><!--end of col-->
     </div><!--end of row-->
