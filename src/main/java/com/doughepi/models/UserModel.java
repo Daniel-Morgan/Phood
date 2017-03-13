@@ -15,30 +15,49 @@ import java.util.UUID;
 public class UserModel
 {
     //Primary key for Hibernate.
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "userID")
     private UUID userID;
 
     //User login information.
+    @Column(name = "userUsername")
     private String userUsername;
+
+    @Column(name = "userPassword")
     private String userPassword;
+
+    @Transient
     private String userConfirmationPassword;
 
     //User personal information.
+    @Column(name = "userEmail")
     private String userEmail;
+
+    @Column(name = "userFirstName")
     private String userFirstName;
+
+    @Column(name = "userMiddleInitial")
     private String userMiddleInitial;
+
+    @Column(name = "userLastName")
     private String userLastName;
 
-
     //Used for testing.
+    @Column(name = "other")
     private UUID other;
 
     //User assigned roles.
+    @ManyToMany
+    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "roleID"))
     private Set<RoleModel> roleSet;
 
     // Foreign key linking recipes to the user
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userID")
     private List<RecipeModel> recipeModels;
 
-    @Column(name = "userUsername")
+
     public String getUserUsername()
     {
         return userUsername;
@@ -49,7 +68,6 @@ public class UserModel
         this.userUsername = userUsername;
     }
 
-    @Column(name = "userPassword")
     public String getUserPassword()
     {
         return userPassword;
@@ -60,7 +78,6 @@ public class UserModel
         this.userPassword = userPassword;
     }
 
-    @Transient
     public String getUserConfirmationPassword()
     {
         return userConfirmationPassword;
@@ -71,7 +88,6 @@ public class UserModel
         this.userConfirmationPassword = userConfirmationPassword;
     }
 
-    @Column(name = "userEmail")
     public String getUserEmail()
     {
         return userEmail;
@@ -82,7 +98,6 @@ public class UserModel
         this.userEmail = userEmail;
     }
 
-    @Column(name = "userFirstName")
     public String getUserFirstName()
     {
         return userFirstName;
@@ -93,7 +108,6 @@ public class UserModel
         this.userFirstName = userFirstName;
     }
 
-    @Column(name = "userMiddleInitial")
     public String getUserMiddleInitial()
     {
         return userMiddleInitial;
@@ -104,7 +118,6 @@ public class UserModel
         this.userMiddleInitial = userMiddleInitial;
     }
 
-    @Column(name = "userLastName")
     public String getUserLastName()
     {
         return userLastName;
@@ -115,8 +128,6 @@ public class UserModel
         this.userLastName = userLastName;
     }
 
-    @ManyToMany
-    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "roleID"))
     public Set<RoleModel> getRoleSet()
     {
         return roleSet;
@@ -127,7 +138,6 @@ public class UserModel
         this.roleSet = roleSet;
     }
 
-    @Column(name = "other")
     public UUID getOther()
     {
         return other;
@@ -144,10 +154,6 @@ public class UserModel
         return obj instanceof UserModel && ((UserModel) obj).getUserID().equals(getUserID());
     }
 
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "userID")
     public UUID getUserID()
     {
         return userID;
@@ -158,7 +164,6 @@ public class UserModel
         this.userID = userID;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userID")
     public List<RecipeModel> getRecipeModels() {
         return recipeModels;
     }

@@ -15,17 +15,29 @@ import java.util.UUID;
 @Table(name = "ingredient")
 public class IngredientModel {
 
-    private UUID ingredientID;
-    private UUID recipeID;
-    private RecipeModel recipeModel;
-    private double ingredientQuantity;
-    private String ingredientName;
-    private String ingredientUnit;
-
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "ingredientID")
+    @Column(name = "ingredientID", length = 16)
+    private UUID ingredientID;
+
+    @Column(name = "recipeid", length = 16)
+    private UUID recipeID;
+
+    @ManyToOne
+    @JoinColumn(name = "recipeid", insertable = false, updatable = false)
+    private RecipeModel recipeModel;
+
+    @Column(name = "ingredientquantity")
+    private double ingredientQuantity;
+
+    @Column(name = "ingredientname")
+    private String ingredientName;
+
+    @Column(name = "ingredientunit")
+    private String ingredientUnit;
+
+
     public UUID getIngredientID() {
         return ingredientID;
     }
@@ -34,13 +46,10 @@ public class IngredientModel {
         this.ingredientID = ingredientID;
     }
 
-    @Column(name = "recipeid")
     public UUID getRecipeID() {
         return recipeID;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "recipeid", insertable = false, updatable = false)
     public RecipeModel getRecipeModel() {
         return recipeModel;
     }
@@ -53,7 +62,6 @@ public class IngredientModel {
         this.recipeID = recipeID;
     }
 
-    @Column(name = "ingredientquantity")
     public double getIngredientQuantity() {
         return ingredientQuantity;
     }
@@ -62,7 +70,6 @@ public class IngredientModel {
         this.ingredientQuantity = ingredientQuantity;
     }
 
-    @Column(name = "ingredientname")
     public String getIngredientName() {
         return ingredientName;
     }
@@ -71,7 +78,6 @@ public class IngredientModel {
         this.ingredientName = ingredientName;
     }
 
-    @Column(name = "ingredientunit")
     public String getIngredientUnit() {
         return ingredientUnit;
     }

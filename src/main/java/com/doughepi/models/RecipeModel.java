@@ -13,19 +13,36 @@ import java.util.UUID;
 @Entity
 @Table(name = "recipe")
 public class RecipeModel {
-    private UUID recipeID;
-    private UUID userID;
-    private UserModel userModel;
-    private Date creationDate;
-    private String recipeName;
-    private String recipeDescription;
-    private String recipeCategory;
-    private List<IngredientModel> ingredientModel;
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "recipeid")
+    @Column(name = "recipeid", length = 16)
+    private UUID recipeID;
+
+    @Column(name = "userid", length = 16)
+    private UUID userID;
+
+    @ManyToOne
+    @JoinColumn(name = "userid", insertable = false, updatable = false)
+    private UserModel userModel;
+
+    @Column(name = "creationdate")
+    private Date creationDate;
+
+    @Column(name = "recipename")
+    private String recipeName;
+
+    @Column(name = "recipedescription")
+    private String recipeDescription;
+
+    @Column(name = "recipecategory")
+    private String recipeCategory;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipeID")
+    private List<IngredientModel> ingredientModel;
+
+
     public UUID getRecipeID() {
         return recipeID;
     }
@@ -34,7 +51,6 @@ public class RecipeModel {
         this.recipeID = recipeID;
     }
 
-    @Column(name = "userid")
     public UUID getUserID() {
         return userID;
     }
@@ -43,8 +59,6 @@ public class RecipeModel {
         this.userID = userID;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "userid", insertable = false, updatable = false)
     public UserModel getUserModel() {
         return userModel;
     }
@@ -53,7 +67,6 @@ public class RecipeModel {
         this.userModel = userModel;
     }
 
-    @Column(name = "creationdate")
     public Date getCreationDate() {
         return creationDate;
     }
@@ -62,7 +75,6 @@ public class RecipeModel {
         this.creationDate = creationDate;
     }
 
-    @Column(name = "recipename")
     public String getRecipeName() {
         return recipeName;
     }
@@ -71,7 +83,6 @@ public class RecipeModel {
         this.recipeName = recipeName;
     }
 
-    @Column(name = "recipedescription")
     public String getRecipeDescription() {
         return recipeDescription;
     }
@@ -80,7 +91,6 @@ public class RecipeModel {
         this.recipeDescription = recipeDescription;
     }
 
-    @Column(name = "recipecategory")
     public String getRecipeCategory() {
         return recipeCategory;
     }
@@ -89,7 +99,6 @@ public class RecipeModel {
         this.recipeCategory = recipeCategory;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipeID")
     public List<IngredientModel> getIngredientModel() {
         return ingredientModel;
     }
