@@ -13,14 +13,20 @@ import java.util.UUID;
 @Table(name = "role")
 public class RoleModel
 {
-    private UUID roleID;
-    private String roleName;
-    private Set<UserModel> userModelSet;
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "roleid")
+    @Column(name = "role_id", length = 16)
+    private UUID roleID;
+
+    @Column(name = "role_name")
+    private String roleName;
+
+    @ManyToMany(mappedBy = "roleSet")
+    private Set<UserModel> userModelSet;
+
+
     public UUID getRoleID()
     {
         return roleID;
@@ -31,7 +37,6 @@ public class RoleModel
         this.roleID = roleID;
     }
 
-    @Column(name = "rolename")
     public String getRoleName()
     {
         return roleName;
@@ -42,7 +47,6 @@ public class RoleModel
         this.roleName = roleName;
     }
 
-    @ManyToMany(mappedBy = "roleSet")
     public Set<UserModel> getUserModelSet()
     {
         return userModelSet;
