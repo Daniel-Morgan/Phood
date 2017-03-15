@@ -14,7 +14,7 @@
         <div id="rowTest" class="row">
             <div class="col-lg-6 offset-lg-3">
                 <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
-                <form action="/register?page=2" method="post" th:object="${user}">
+                <form action="/register?page=2" method="post" style="display: inline;" th:object="${user}">
                     <div class="form-group">
                         <label for="inputUserName">Username</label>
                         <input type="text" class="form-control" id="inputUserName" maxlength="24"
@@ -40,9 +40,10 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Next</button>
-                    <button type="cancel" class="btn btn-danger">Cancel</button>
                 </form><!--end of form-->
-
+                <form action="/" style="display: inline;">
+                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                </form>
             </div><!--end of col-->
         </div><!--end of row-->
     </div><!--end of container fluid hi-->
