@@ -10,15 +10,23 @@ import java.util.UUID;
  */
 public class ImageModel {
 
-    private UUID imageID;
-    private UUID recipeID;
-    private RecipeModel recipeModel;
-    private Byte[] imageData;
-
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "imageid")
+    @Column(name = "image_id", length = 16)
+    private UUID imageID;
+
+    @Column(name = "recipe_id", length = 16)
+    private UUID recipeID;
+
+    @ManyToOne
+    @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
+    private RecipeModel recipeModel;
+
+    @Column(name = "image_data")
+    private Byte[] imageData;
+
+
     public UUID getImageID() {
         return imageID;
     }
@@ -27,13 +35,12 @@ public class ImageModel {
         this.imageID = imageID;
     }
 
-    @Column(name = "recipeid")
+
     public UUID getRecipeID() {
         return recipeID;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "recipeid", insertable = false, updatable = false)
+
     public RecipeModel getRecipeModel() {
         return recipeModel;
     }
@@ -46,7 +53,7 @@ public class ImageModel {
         this.recipeID = recipeID;
     }
 
-    @Column(name = "imagedata")
+
     public Byte[] getImageData() {
         return imageData;
     }
