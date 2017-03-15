@@ -17,26 +17,26 @@ public class RecipeModel {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "recipeid", length = 16)
+    @Column(name = "recipe_id", length = 16)
     private UUID recipeID;
 
-    @Column(name = "userid", length = 16)
+    @Column(name = "user_id", length = 16)
     private UUID userID;
 
     @ManyToOne
-    @JoinColumn(name = "userid", insertable = false, updatable = false)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserModel userModel;
 
-    @Column(name = "creationdate")
+    @Column(name = "creation_date")
     private Date creationDate;
 
-    @Column(name = "recipename")
+    @Column(name = "recipe_name")
     private String recipeName;
 
-    @Column(name = "recipedescription")
+    @Column(name = "recipe_description")
     private String recipeDescription;
 
-    @Column(name = "recipecategory")
+    @Column(name = "recipe_category")
     private String recipeCategory;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipeID")

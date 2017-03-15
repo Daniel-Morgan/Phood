@@ -18,23 +18,23 @@ public class IngredientModel {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "ingredientID", length = 16)
+    @Column(name = "ingredient_id", length = 16)
     private UUID ingredientID;
 
-    @Column(name = "recipeid", length = 16)
+    @Column(name = "recipe_id", length = 16)
     private UUID recipeID;
 
     @ManyToOne
-    @JoinColumn(name = "recipeid", insertable = false, updatable = false)
+    @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
     private RecipeModel recipeModel;
 
-    @Column(name = "ingredientquantity")
+    @Column(name = "ingredient_quantity")
     private double ingredientQuantity;
 
-    @Column(name = "ingredientname")
+    @Column(name = "ingredient_name")
     private String ingredientName;
 
-    @Column(name = "ingredientunit")
+    @Column(name = "ingredient_unit")
     private String ingredientUnit;
 
 

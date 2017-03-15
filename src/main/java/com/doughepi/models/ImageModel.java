@@ -13,17 +13,17 @@ public class ImageModel {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "imageid", length = 16)
+    @Column(name = "image_id", length = 16)
     private UUID imageID;
 
-    @Column(name = "recipeid", length = 16)
+    @Column(name = "recipe_id", length = 16)
     private UUID recipeID;
 
     @ManyToOne
-    @JoinColumn(name = "recipeid", insertable = false, updatable = false)
+    @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
     private RecipeModel recipeModel;
 
-    @Column(name = "imagedata")
+    @Column(name = "image_data")
     private Byte[] imageData;
 
 

@@ -17,10 +17,10 @@ public class RoleModel
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "roleid", length = 16)
+    @Column(name = "role_id", length = 16)
     private UUID roleID;
 
-    @Column(name = "rolename")
+    @Column(name = "role_name")
     private String roleName;
 
     @ManyToMany(mappedBy = "roleSet")

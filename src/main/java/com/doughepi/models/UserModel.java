@@ -18,30 +18,30 @@ public class UserModel
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "userID")
+    @Column(name = "user_id")
     private UUID userID;
 
     //User login information.
-    @Column(name = "userUsername")
+    @Column(name = "user_username")
     private String userUsername;
 
-    @Column(name = "userPassword")
+    @Column(name = "user_password")
     private String userPassword;
 
     @Transient
     private String userConfirmationPassword;
 
     //User personal information.
-    @Column(name = "userEmail")
+    @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "userFirstName")
+    @Column(name = "user_firstName")
     private String userFirstName;
 
-    @Column(name = "userMiddleInitial")
+    @Column(name = "user_middle_initial")
     private String userMiddleInitial;
 
-    @Column(name = "userLastName")
+    @Column(name = "user_lastname")
     private String userLastName;
 
     //Used for testing.
@@ -50,7 +50,8 @@ public class UserModel
 
     //User assigned roles.
     @ManyToMany
-    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "roleID"))
+    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", columnDefinition = "BINARY(16)"))
     private Set<RoleModel> roleSet;
 
     // Foreign key linking recipes to the user
