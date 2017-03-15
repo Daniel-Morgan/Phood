@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Phood | Create a recipe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+</head>
+<body>
+<div id="recipeform">
+
+    <div id="" class="container-fluid">
+        <div id="rowTest" class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <form action="/recipe/new" method="post" style="display: inline;">
+
+                    <div class="form-group">
+                        <label for="inputRecipeName">Recipe Name</label>
+                        <input type="text" class="form-control" id="inputRecipeName"
+                               placeholder="Recipe Name" required="required" style="margin-bottom: 1rem;"/>
+
+                        <label for="inputRecipeDescription">Recipe Description</label>
+                        <input type="text" class="form-control" id="inputRecipeDescription"
+                               placeholder="Recipe Description" required="required" style="margin-bottom: 1rem;"/>
+
+                        <label for="inputRecipeCategory">Recipe Category</label>
+                        <input type="text" class="form-control" id="inputRecipeCategory"
+                               placeholder="Recipe Category" required="required" style="margin-bottom: 1rem;"/>
+                    </div>
+
+                    <p>Ingredients</p>
+                    <div id="ingredient-container" class="form-group">
+                        <div id="ingredient-template" class="row" style="display: none; margin-bottom: 1rem;">
+                            <div class="col-2">
+                                <input type="number" class="ingredient-quantity form-control"/>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="ingredient-name form-control"/>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="ingredient-unit form-control"/>
+                            </div>
+                            <div class="col-1">
+                                <button id="remove-button" type="button" class="btn btn-danger">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="ingredient-button" type="button" class="btn btn-primary">Add Ingredient</button>
+                    <button type="button" class="btn btn-primary">Next</button>
+                </form><!--end of form-->
+
+                <form action="/" style="display: inline;">
+                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                </form>
+
+            </div><!--end of col-->
+        </div><!--end of row-->
+    </div><!--end of container fluid hi-->
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        var ingredients = [];
+        var index = 1;
+
+
+        var $ingredientContainer = $("#ingredient-container");
+        var $ingredientButton = $("#ingredient-button");
+        var $ingredientTemplate = $("#ingredient-template");
+
+
+        $ingredientButton.click(function () {
+            duplicateAndAppend();
+        })
+
+        function duplicateAndAppend() {
+            var $newIngredientRow = $ingredientTemplate.clone();
+            $ingredientContainer.append($newIngredientRow);
+            $newIngredientRow.attr({
+                id: ""
+            });
+
+            var $removeButton = $newIngredientRow.find('#remove-button');
+            $removeButton.attr({id: "button-" + index});
+
+            $removeButton.click(function () {
+                $newIngredientRow.remove();
+                index--;
+            });
+
+            $newIngredientRow.show();
+            ingredients.push($newIngredientRow);
+            index++;
+        }
+    })
+</script>
+
+</body>
+</html>
