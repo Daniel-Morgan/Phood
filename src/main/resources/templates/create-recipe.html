@@ -11,6 +11,14 @@
 <div id="recipeform">
 
     <div id="" class="container-fluid">
+        <div class="row" id="button-row">
+            <div class="col-lg-4 offset-lg-8">
+                <form action="/" style="display: inline;">
+                    <button type="button" class="btn btn-success">Save</button>
+                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                </form>
+            </div>
+        </div>
         <div id="rowTest" class="row">
             <div class="col-lg-6 offset-lg-3">
                 <form action="/recipe/new" method="post" style="display: inline;">
@@ -33,13 +41,13 @@
                     <div id="ingredient-container" class="form-group">
                         <div id="ingredient-template" class="row" style="display: none; margin-bottom: 1rem;">
                             <div class="col-2">
-                                <input type="number" class="ingredient-quantity form-control"/>
-                            </div>
-                            <div class="col-6">
-                                <input type="text" class="ingredient-name form-control"/>
+                                <input type="number" class="ingredient-quantity form-control" placeholder="1"/>
                             </div>
                             <div class="col-3">
-                                <input type="text" class="ingredient-unit form-control"/>
+                                <input type="text" class="ingredient-unit form-control" placeholder="Cup"/>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="ingredient-name form-control" placeholder="Milk"/>
                             </div>
                             <div class="col-1">
                                 <button id="remove-button" type="button" class="btn btn-danger">Remove</button>
@@ -48,12 +56,7 @@
                     </div>
 
                     <button id="ingredient-button" type="button" class="btn btn-primary">Add Ingredient</button>
-                    <button type="button" class="btn btn-primary">Next</button>
                 </form><!--end of form-->
-
-                <form action="/" style="display: inline;">
-                    <button type="cancel" class="btn btn-danger">Cancel</button>
-                </form>
 
             </div><!--end of col-->
         </div><!--end of row-->
@@ -78,7 +81,7 @@
 
         $ingredientButton.click(function () {
             duplicateAndAppend();
-        })
+        });
 
         function duplicateAndAppend() {
             var $newIngredientRow = $ingredientTemplate.clone();
