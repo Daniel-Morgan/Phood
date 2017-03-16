@@ -4,6 +4,8 @@ import com.doughepi.models.UserModel;
 import com.doughepi.repositories.RoleRepository;
 import com.doughepi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,13 @@ public class UserServiceImpl implements UserService
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public UserModel getCurrentLoggedInUser() {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println(name);
+        return findByUsername(name);
     }
 
     @Override

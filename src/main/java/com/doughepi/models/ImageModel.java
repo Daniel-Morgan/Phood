@@ -8,6 +8,8 @@ import java.util.UUID;
 /**
  * Created by ajreicha on 2/20/17.
  */
+@Entity
+@Table(name = "image")
 public class ImageModel {
 
     @Id
@@ -16,11 +18,8 @@ public class ImageModel {
     @Column(name = "image_id", length = 16)
     private UUID imageID;
 
-    @Column(name = "recipe_id", length = 16)
-    private UUID recipeID;
 
-    @ManyToOne
-    @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private RecipeModel recipeModel;
 
     @Column(name = "image_data")
@@ -36,9 +35,6 @@ public class ImageModel {
     }
 
 
-    public UUID getRecipeID() {
-        return recipeID;
-    }
 
 
     public RecipeModel getRecipeModel() {
@@ -49,9 +45,6 @@ public class ImageModel {
         this.recipeModel = recipeModel;
     }
 
-    public void setRecipeID(UUID recipeID) {
-        this.recipeID = recipeID;
-    }
 
 
     public Byte[] getImageData() {

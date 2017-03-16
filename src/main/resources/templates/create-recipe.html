@@ -14,26 +14,26 @@
         <div class="row" id="button-row">
             <div class="col-lg-4 offset-lg-8">
                 <form action="/" style="display: inline;">
-                    <button type="button" class="btn btn-success">Save</button>
+                    <button id="save-button" type="button" class="btn btn-success">Save</button>
                     <button type="cancel" class="btn btn-danger">Cancel</button>
                 </form>
             </div>
         </div>
         <div id="rowTest" class="row">
             <div class="col-lg-6 offset-lg-3">
-                <form action="/recipe/new" method="post" style="display: inline;">
+                <form id="recipe-form" method="post" style="display: inline;">
 
                     <div class="form-group">
                         <label for="inputRecipeName">Recipe Name</label>
-                        <input type="text" class="form-control" id="inputRecipeName"
+                        <input name="recipeName" type="text" class="form-control" id="inputRecipeName"
                                placeholder="Recipe Name" required="required" style="margin-bottom: 1rem;"/>
 
                         <label for="inputRecipeDescription">Recipe Description</label>
-                        <input type="text" class="form-control" id="inputRecipeDescription"
+                        <input name="recipeDescription" type="text" class="form-control" id="inputRecipeDescription"
                                placeholder="Recipe Description" required="required" style="margin-bottom: 1rem;"/>
 
                         <label for="inputRecipeCategory">Recipe Category</label>
-                        <input type="text" class="form-control" id="inputRecipeCategory"
+                        <input name="recipeCategory" type="text" class="form-control" id="inputRecipeCategory"
                                placeholder="Recipe Category" required="required" style="margin-bottom: 1rem;"/>
                     </div>
 
@@ -70,10 +70,11 @@
 
 <script>
     jQuery(document).ready(function () {
-        var ingredients = [];
         var index = 1;
 
 
+        var $recipeForm = $("#recipe-form");
+        var $saveButton = $("#save-button");
         var $ingredientContainer = $("#ingredient-container");
         var $ingredientButton = $("#ingredient-button");
         var $ingredientTemplate = $("#ingredient-template");
@@ -81,6 +82,10 @@
 
         $ingredientButton.click(function () {
             duplicateAndAppend();
+        });
+
+        $saveButton.click(function () {
+            submit();
         });
 
         function duplicateAndAppend() {
@@ -99,8 +104,49 @@
             });
 
             $newIngredientRow.show();
-            ingredients.push($newIngredientRow);
             index++;
+        }
+
+        function submit() {
+            var recipeInfo = {
+                name: $("#inputRecipeName").val(),
+                description: $("#inputRecipeDescription").val(),
+                category: $("#inputRecipeCategory").val(),
+                ingredientList: getIngredients()
+            };
+
+            $.ajax({
+                url: '/recipe/new?_submit',
+                method: 'post',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify(recipeInfo),
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+
+            function getIngredients() {
+                var ingredients = [];
+                $("#ingredient-container").find("> .row").each(function () {
+
+                    console.log("Hello.");
+
+                    var $currentRow = $(this);
+                    if ($currentRow.attr('id') !== "ingredient-template") {
+                        var $ingredientQuantity = $currentRow.find(".ingredient-quantity").val();
+                        var $ingredientUnit = $currentRow.find(".ingredient-unit").val();
+                        var $ingredientName = $currentRow.find(".ingredient-name").val();
+
+                        ingredients.push({
+                            ingredientQuantity: $ingredientQuantity,
+                            ingredientUnit: $ingredientUnit,
+                            ingredientName: $ingredientName
+                        })
+                    }
+                });
+                return ingredients;
+            }
         }
     })
 </script>
