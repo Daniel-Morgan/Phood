@@ -58,6 +58,8 @@
     <security:http auto-config="true" use-expressions="true">
         <security:form-login login-page="/login" authentication-failure-url="/login?_error" default-target-url="/"/>
         <!--<security:intercept-url pattern="/profile" access="isAuthenticated()"/>-->
+        <security:intercept-url pattern="/recipe/new" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/profile" access="isAuthenticated()"/>
         <security:intercept-url pattern="/**" access="permitAll()"/>
         <security:csrf disabled="true"/>
     </security:http>

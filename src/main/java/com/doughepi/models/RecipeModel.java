@@ -35,7 +35,7 @@ public class RecipeModel {
     @Column(name = "recipe_category")
     private String recipeCategory;
 
-    @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<IngredientModel> ingredientModels;
 
     @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL)

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
+
+<!--/*@thymesVar id="recipe" type="com.doughepi.models.RecipeModel"*/-->
+<p th:text="${recipe.getRecipeID()}"></p>
+<p th:text="${recipe.getCreationDate()}"></p>
+<p th:text="${recipe.getRecipeName()}"></p>
+<p th:text="${recipe.getRecipeDescription()}"></p>
+<p th:text="${recipe.getRecipeCategory()}"></p>
+<ul>
+    <li th:each="ingredient : *{recipe.getIngredientModels()}">
+        <p th:text="${ingredient.getIngredientID()}"></p>
+        <p th:text="${ingredient.getIngredientQuantity()}"></p>
+        <p th:text="${ingredient.getIngredientUnit()}"></p>
+        <p th:text="${ingredient.getIngredientName()}"></p>
+    </li>
+</ul>
 
 </body>
 </html>
