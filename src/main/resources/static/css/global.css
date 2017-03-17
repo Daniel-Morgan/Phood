@@ -2,6 +2,11 @@
     padding: 50px;
 }
 
+body {
+    background-size: contain;
+    background-image: url("/img/logo.jpg");
+    background-color: hsl(182, 52%, 70%);
+}
 
 .user-name {
     color: #c2c2c2;
@@ -15,21 +20,6 @@
     text-transform: uppercase;
     font-weight: 900;
 }
-
-/*
-.header img {
-    float: left;
-    width: 100px;
-    height: 100px;
-    background: #555;
-}
-
-.header h1 {
-    position: relative;
-    top: 18px;
-    left: 10px;
-}
-*/
 
 .black-bar{
     border-style:solid;
