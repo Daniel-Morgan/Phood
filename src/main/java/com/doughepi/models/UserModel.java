@@ -1,8 +1,11 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -18,7 +21,7 @@ public class UserModel
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "user_id")
+    @Column(name = "user_id", length = 16)
     private UUID userID;
 
     //User login information.
@@ -45,18 +48,19 @@ public class UserModel
     private String userLastName;
 
     //Used for testing.
-    @Column(name = "other")
+    @Column(name = "other", length = 16)
     private UUID other;
 
     //User assigned roles.
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)"),
             inverseJoinColumns = @JoinColumn(name = "role_id", columnDefinition = "BINARY(16)"))
     private Set<RoleModel> roleSet;
 
     // Foreign key linking recipes to the user
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userID")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userModel", cascade = CascadeType.ALL)
     private List<RecipeModel> recipeModels;
+
 
 
     public String getUserUsername()

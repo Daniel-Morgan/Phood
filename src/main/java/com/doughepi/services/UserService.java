@@ -10,6 +10,8 @@ import java.util.UUID;
 public interface UserService
 {
 
+    UserModel getCurrentLoggedInUser();
+
     UserModel findByUsername(String username);
 
     UserModel findByEmail(String email);

@@ -20,11 +20,7 @@ public class RecipeModel {
     @Column(name = "recipe_id", length = 16)
     private UUID recipeID;
 
-    @Column(name = "user_id", length = 16)
-    private UUID userID;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private UserModel userModel;
 
     @Column(name = "creation_date")
@@ -39,8 +35,11 @@ public class RecipeModel {
     @Column(name = "recipe_category")
     private String recipeCategory;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipeID")
-    private List<IngredientModel> ingredientModel;
+    @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<IngredientModel> ingredientModels;
+
+    @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL)
+    private List<ImageModel> imageModels;
 
 
     public UUID getRecipeID() {
@@ -49,14 +48,6 @@ public class RecipeModel {
 
     public void setRecipeID(UUID recipeID) {
         this.recipeID = recipeID;
-    }
-
-    public UUID getUserID() {
-        return userID;
-    }
-
-    public void setUserID(UUID userID) {
-        this.userID = userID;
     }
 
     public UserModel getUserModel() {
@@ -99,12 +90,19 @@ public class RecipeModel {
         this.recipeCategory = recipeCategory;
     }
 
-    public List<IngredientModel> getIngredientModel() {
-        return ingredientModel;
+    public List<IngredientModel> getIngredientModels() {
+        return ingredientModels;
     }
 
-    public void setIngredientModel(List<IngredientModel> ingredientModel) {
-        this.ingredientModel = ingredientModel;
+    public void setIngredientModels(List<IngredientModel> ingredientModels) {
+        this.ingredientModels = ingredientModels;
     }
 
+    public List<ImageModel> getImageModels() {
+        return imageModels;
+    }
+
+    public void setImageModels(List<ImageModel> imageModels) {
+        this.imageModels = imageModels;
+    }
 }

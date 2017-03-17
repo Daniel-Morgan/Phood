@@ -4,6 +4,7 @@ import org.hibernate.annotations.*;
 import org.hibernate.annotations.common.util.StringHelper;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.UUID;
@@ -21,11 +22,8 @@ public class IngredientModel {
     @Column(name = "ingredient_id", length = 16)
     private UUID ingredientID;
 
-    @Column(name = "recipe_id", length = 16)
-    private UUID recipeID;
 
-    @ManyToOne
-    @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private RecipeModel recipeModel;
 
     @Column(name = "ingredient_quantity")
@@ -46,9 +44,6 @@ public class IngredientModel {
         this.ingredientID = ingredientID;
     }
 
-    public UUID getRecipeID() {
-        return recipeID;
-    }
 
     public RecipeModel getRecipeModel() {
         return recipeModel;
@@ -58,9 +53,6 @@ public class IngredientModel {
         this.recipeModel = recipeModel;
     }
 
-    public void setRecipeID(UUID recipeID) {
-        this.recipeID = recipeID;
-    }
 
     public double getIngredientQuantity() {
         return ingredientQuantity;

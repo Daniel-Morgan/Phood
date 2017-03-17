@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     </meta>
@@ -18,10 +18,22 @@
         <div class="col-lg-12">
             <div id="name-wrapper">
                 <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
-                <h5 class="user-name">@ajreicha</h5>
-                <h3 class="full-name">Adam Reichanadter</h3>
+                <h5 class="user-name" th:text="${username}">@ajreicha</h5>
+                <h3 class="full-name" th:text="${name}">Adam Reichanadter</h3>
             </div>
             <hr class="black-bar"/>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <!--/*@thymesVar id="recipe" type="com.doughepi.models.RecipeModel"*/-->
+                        <li th:each="recipe : ${recipes}">
+                            <a th:text="*{recipe.getRecipeName()}"
+                               th:href="@{/recipe?recipeID={path}(path=${recipe.getRecipeID()})}"></a>
+                            <p th:text="*{recipe.getRecipeDescription()}"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
