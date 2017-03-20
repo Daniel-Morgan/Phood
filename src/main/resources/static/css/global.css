@@ -16,6 +16,14 @@ body {
 
 }
 
+#rowtest {
+    background-image: url("/img/phoodLogo2.PNG");
+    background-size: 50%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
 .header {
     text-transform: uppercase;
     font-weight: 900;
@@ -32,5 +40,10 @@ body {
 }
 
 button {
+    border-style: ridge;
     background-color: #6CA0DC;
+}
+
+.image {
+    padding: 25px;
 }
