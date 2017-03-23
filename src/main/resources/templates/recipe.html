@@ -12,6 +12,9 @@
 <p th:text="${recipe.getRecipeName()}"></p>
 <p th:text="${recipe.getRecipeDescription()}"></p>
 <p th:text="${recipe.getRecipeCategory()}"></p>
+<p th:text="${recipe.getLikes()}"></p>
+<button id="like-button" type="button" class="btn btn-submit">Like</button>
+<button id="dislike-button" type="button" class="btn btn-danger">Dislike</button>
 <ul>
     <li th:each="ingredient : *{recipe.getIngredientModels()}">
         <p th:text="${ingredient.getIngredientID()}"></p>
@@ -20,6 +23,33 @@
         <p th:text="${ingredient.getIngredientName()}"></p>
     </li>
 </ul>
-
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script>
+    jQuery(document).ready(function () {
+        var $likeButton = $("#like-button");
+        var $dislikeButton = $("#dislike-button");
+        $likeButton.click(function () {
+            like();
+        });
+        $dislikeButton.click(function () {
+            dislike();
+        });
+        function like() {
+            $.ajax({
+                url: '/recipe/like' + location.search,
+                method: 'post'
+            })
+        }
+        function dislike() {
+            $.ajax({
+                url: '/recipe/dislike' + location.search,
+                method: 'post'
+            })
+        }
+    })
+</script>
 </body>
 </html>

@@ -41,6 +41,9 @@ public class RecipeModel {
     @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL)
     private List<ImageModel> imageModels;
 
+    @Column(name = "likes")
+    private int likes;
+
 
     public UUID getRecipeID() {
         return recipeID;
@@ -96,6 +99,14 @@ public class RecipeModel {
 
     public void setIngredientModels(List<IngredientModel> ingredientModels) {
         this.ingredientModels = ingredientModels;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
     public List<ImageModel> getImageModels() {
