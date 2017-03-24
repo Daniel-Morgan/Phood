@@ -1,5 +1,6 @@
 package com.doughepi.controllers;
 
+import com.doughepi.models.RecipeModel;
 import com.doughepi.repositories.RecipeRepository;
 import com.doughepi.repositories.UserRepository;
 import com.doughepi.services.RecipeService;
@@ -21,8 +22,7 @@ import java.util.UUID;
 @RequestMapping("/recipe")
 public class RecipeController {
 
-    final
-    RecipeRepository recipeRepository;
+    final RecipeRepository recipeRepository;
     final UserService userService;
     final UserRepository userRepository;
     final RecipeService recipeService;
@@ -34,7 +34,6 @@ public class RecipeController {
         this.userRepository = userRepository;
         this.recipeService = recipeService;
     }
-
 
     @RequestMapping("/new")
     public String showRecipeForm(Model model) {
@@ -55,5 +54,20 @@ public class RecipeController {
         return "index";
     }
 
+    @RequestMapping(value = "/like", params = {"recipeID"}, method = RequestMethod.POST)
+    public int likeRecipe(@RequestParam("recipeID") UUID recipeID) {
+        RecipeModel recipe = recipeRepository.findOne(recipeID);
+        recipe.setLikes(recipe.getLikes() + 1);
+        recipeRepository.save(recipe);
+        return recipe.getLikes();
+    }
+
+    @RequestMapping(value = "/dislike", params = {"recipeID"}, method = RequestMethod.POST)
+    public int dislikeRecipe(@RequestParam("recipeID") UUID recipeID) {
+        RecipeModel recipe = recipeRepository.findOne(recipeID);
+        recipe.setLikes(recipe.getLikes() - 1);
+        recipeRepository.save(recipe);
+        return recipe.getLikes();
+    }
 
 }
