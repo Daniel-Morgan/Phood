@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet"/>
+</head>
+<body>
+<nav th:replace="_navbar :: navbar"></nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="search-container">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <input th:value="${query}" type="text" class="form-control"
+                                       placeholder="Search for..."/>
+                                <span class="input-group-btn"><button class="btn btn-secondary"
+                                                                      type="button">Go!</button></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="search-seperator">
+                <p><span th:text="${count}"></span> results found in <span th:text="${duration}"></span> <span th:text="${unit}"></span></p>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="row search-result-container">
+        <div class="col-lg-12">
+
+            <!--Recipe Object-->
+            <!--/*@thymesVar id="result" type="com.doughepi.models.RecipeModel"*/-->
+            <div th:each="recipe : ${results}" class="row search-result">
+                <div class="col-lg-12">
+                    <a th:text="*{recipe.getRecipeName()}"
+                       th:href="@{/recipe?recipeID={path}(path=${recipe.getRecipeID()})}"></a><br/>
+                    <p th:text="*{recipe.getRecipeDescription()}"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

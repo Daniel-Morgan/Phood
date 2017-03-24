@@ -1,6 +1,8 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "recipe")
+@Indexed
 public class RecipeModel {
 
     @Id
@@ -27,12 +30,15 @@ public class RecipeModel {
     private Date creationDate;
 
     @Column(name = "recipe_name")
+    @Field(index= Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String recipeName;
 
     @Column(name = "recipe_description")
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String recipeDescription;
 
     @Column(name = "recipe_category")
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String recipeCategory;
 
     @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
