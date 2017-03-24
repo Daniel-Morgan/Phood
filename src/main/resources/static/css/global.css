@@ -23,3 +23,12 @@
 #rowTest {
     margin-top: 15vh;
 }
+
+.search-container {
+    /*padding: 10px;*/
+    margin-bottom: 10px;
+}
+
+.search-result-container .search-result {
+    margin-bottom: 10px;
+}
