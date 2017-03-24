@@ -2,27 +2,73 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Phood | Recipe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link type="text/css" rel="stylesheet" href="/css/global.css"/>
 </head>
 <body>
-
 <!--/*@thymesVar id="recipe" type="com.doughepi.models.RecipeModel"*/-->
-<p th:text="${recipe.getRecipeID()}"></p>
-<p th:text="${recipe.getCreationDate()}"></p>
-<p th:text="${recipe.getRecipeName()}"></p>
-<p th:text="${recipe.getRecipeDescription()}"></p>
-<p th:text="${recipe.getRecipeCategory()}"></p>
-<p th:text="${recipe.getLikes()}"></p>
-<button id="like-button" type="button" class="btn btn-submit">Like</button>
-<button id="dislike-button" type="button" class="btn btn-danger">Dislike</button>
-<ul>
-    <li th:each="ingredient : *{recipe.getIngredientModels()}">
-        <p th:text="${ingredient.getIngredientID()}"></p>
-        <p th:text="${ingredient.getIngredientQuantity()}"></p>
-        <p th:text="${ingredient.getIngredientUnit()}"></p>
-        <p th:text="${ingredient.getIngredientName()}"></p>
-    </li>
-</ul>
+<div id="recipeform">
+
+    <div id="" class="container-fluid">
+        <div class="row" id="button-row">
+        </div>
+        <div id="rowTest" class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <form id="recipe-form" method="post" style="display: inline;">
+
+                    <div class="form-group">
+                        <label for="inputRecipeName">Recipe Name</label>
+                        <p th:text="${recipe.getRecipeName()}" name="recipeName" class="form-control"
+                           id="inputRecipeName"
+                           style="margin-bottom: 1rem;"></p>
+
+                        <label for="inputRecipeDescription">Recipe Description</label>
+                        <p name="recipeDescription" class="form-control" id="inputRecipeDescription"
+                           th:text="${recipe.getRecipeDescription()}"
+                           style="margin-bottom: 1rem;"></p>
+
+                        <label for="inputRecipeCategory">Recipe Category</label>
+                        <p name="recipeCategory" class="form-control" id="inputRecipeCategory"
+                           th:text="${recipe.getRecipeCategory()}"
+                           style="margin-bottom: 1rem;"></p>
+
+                        <label for="inputRecipeLikes">Recipe Likes</label>
+                        <p th:text="${recipe.getLikes()}" class="form-control"
+                           id="inputRecipeLikes"
+                           style="margin-bottom: 1rem;"></p>
+                    </div>
+
+                    <p>Ingredients</p>
+                    <div th:each="ingredient : *{recipe.getIngredientModels()}" id="ingredient-container"
+                         class="form-group">
+                        <div id="ingredient-template" class="row">
+                            <div class="col-2">
+                                <p th:text="${ingredient.getIngredientQuantity()}"
+                                   class="ingredient-quantity form-control"></p>
+                            </div>
+                            <div class="col-3">
+                                <p th:text="${ingredient.getIngredientUnit()}"
+                                   class="ingredient-unit form-control"></p>
+                            </div>
+                            <div class="col-6">
+                                <p th:text="${ingredient.getIngredientName()}"
+                                   class="ingredient-name form-control"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="like-button" type="button" class="btn btn-success">Like</button>
+                    <button id="dislike-button" type="button" class="btn btn-danger">Dislike</button>
+
+                </form><!--end of form-->
+
+            </div><!--end of col-->
+        </div><!--end of row-->
+    </div><!--end of container fluid hi-->
+</div>
+
 <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -43,6 +89,7 @@
                 method: 'post'
             })
         }
+
         function dislike() {
             $.ajax({
                 url: '/recipe/dislike' + location.search,
