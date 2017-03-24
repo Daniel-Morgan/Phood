@@ -20,24 +20,24 @@
 
                     <div class="form-group">
                         <label for="inputRecipeName">Recipe Name</label>
-                        <p th:text="${recipe.getRecipeName()}" name="recipeName" type="text" class="form-control"
+                        <p th:text="${recipe.getRecipeName()}" name="recipeName" class="form-control"
                            id="inputRecipeName"
-                           placeholder="Recipe Name" required="required" style="margin-bottom: 1rem;"></p>
+                           style="margin-bottom: 1rem;"></p>
 
                         <label for="inputRecipeDescription">Recipe Description</label>
-                        <p name="recipeDescription" type="text" class="form-control" id="inputRecipeDescription"
-                           th:text="${recipe.getRecipeDescription()}" placeholder="Recipe Description"
-                           required="required" style="margin-bottom: 1rem;"></p>
+                        <p name="recipeDescription" class="form-control" id="inputRecipeDescription"
+                           th:text="${recipe.getRecipeDescription()}"
+                           style="margin-bottom: 1rem;"></p>
 
                         <label for="inputRecipeCategory">Recipe Category</label>
-                        <p name="recipeCategory" type="text" class="form-control" id="inputRecipeCategory"
-                           th:text="${recipe.getRecipeCategory()}" placeholder="Recipe Category" required="required"
+                        <p name="recipeCategory" class="form-control" id="inputRecipeCategory"
+                           th:text="${recipe.getRecipeCategory()}"
                            style="margin-bottom: 1rem;"></p>
 
                         <label for="inputRecipeLikes">Recipe Likes</label>
-                        <p th:text="${recipe.getLikes()}" name="recipeLikes" type="text" class="form-control"
+                        <p th:text="${recipe.getLikes()}" class="form-control"
                            id="inputRecipeLikes"
-                           placeholder="Recipe Likes" required="required" style="margin-bottom: 1rem;"></p>
+                           style="margin-bottom: 1rem;"></p>
                     </div>
 
                     <p>Ingredients</p>
@@ -45,16 +45,16 @@
                          class="form-group">
                         <div id="ingredient-template" class="row">
                             <div class="col-2">
-                                <p th:text="${ingredient.getIngredientQuantity()}" type="number"
-                                   class="ingredient-quantity form-control" placeholder="1"></p>
+                                <p th:text="${ingredient.getIngredientQuantity()}"
+                                   class="ingredient-quantity form-control"></p>
                             </div>
                             <div class="col-3">
-                                <p th:text="${ingredient.getIngredientUnit()}" type="text"
-                                   class="ingredient-unit form-control" placeholder="Cup"></p>
+                                <p th:text="${ingredient.getIngredientUnit()}"
+                                   class="ingredient-unit form-control"></p>
                             </div>
                             <div class="col-6">
-                                <p th:text="${ingredient.getIngredientName()}" type="text"
-                                   class="ingredient-name form-control" placeholder="Milk"></p>
+                                <p th:text="${ingredient.getIngredientName()}"
+                                   class="ingredient-name form-control"></p>
                             </div>
                         </div>
                     </div>
