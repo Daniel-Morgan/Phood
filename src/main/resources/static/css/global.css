@@ -2,6 +2,16 @@
     padding: 50px;
 }
 
+body {
+    height:100%;
+    width:100%;
+    background-image:url("/img/foodBackground.jpg");/*your background image*/
+    background-repeat:no-repeat;/*we want to have one single image not a repeated one*/
+    background-size:cover;/*this sets the image to fullscreen covering the whole screen*/
+    /*css hack for ie*/
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.image.jpg',sizingMethod='scale');
+    -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
+}
 
 .user-name {
     color: #c2c2c2;
@@ -9,6 +19,14 @@
 
 .full-name {
 
+}
+
+#rowtest {
+    background-image: url("/img/phoodLogo2.PNG");
+    background-size: 50%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: transparent;
 }
 
 .header {
@@ -26,6 +44,15 @@
     margin-top: 200px;
 }
 
-button {
-    background-color: #9acd32;
+button, input[type=submit] {
+    border-style: ridge;
+    background-color: #6CA0DC;
+}
+
+.image {
+    padding: 25px;
+}
+
+#rowContainer{
+    background-color: white;
 }
