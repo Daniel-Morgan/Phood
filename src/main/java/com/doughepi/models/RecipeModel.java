@@ -1,6 +1,8 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "recipe")
+@Indexed
 public class RecipeModel {
 
     @Id
@@ -20,27 +23,32 @@ public class RecipeModel {
     @Column(name = "recipe_id", length = 16)
     private UUID recipeID;
 
-    @Column(name = "user_id", length = 16)
-    private UUID userID;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private UserModel userModel;
 
     @Column(name = "creation_date")
     private Date creationDate;
 
     @Column(name = "recipe_name")
+    @Field(index= Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String recipeName;
 
     @Column(name = "recipe_description")
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String recipeDescription;
 
     @Column(name = "recipe_category")
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String recipeCategory;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipeID")
-    private List<IngredientModel> ingredientModel;
+    @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<IngredientModel> ingredientModels;
+
+    @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL)
+    private List<ImageModel> imageModels;
+
+    @Column(name = "likes")
+    private int likes;
 
 
     public UUID getRecipeID() {
@@ -49,14 +57,6 @@ public class RecipeModel {
 
     public void setRecipeID(UUID recipeID) {
         this.recipeID = recipeID;
-    }
-
-    public UUID getUserID() {
-        return userID;
-    }
-
-    public void setUserID(UUID userID) {
-        this.userID = userID;
     }
 
     public UserModel getUserModel() {
@@ -99,12 +99,27 @@ public class RecipeModel {
         this.recipeCategory = recipeCategory;
     }
 
-    public List<IngredientModel> getIngredientModel() {
-        return ingredientModel;
+    public List<IngredientModel> getIngredientModels() {
+        return ingredientModels;
     }
 
-    public void setIngredientModel(List<IngredientModel> ingredientModel) {
-        this.ingredientModel = ingredientModel;
+    public void setIngredientModels(List<IngredientModel> ingredientModels) {
+        this.ingredientModels = ingredientModels;
     }
 
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public List<ImageModel> getImageModels() {
+        return imageModels;
+    }
+
+    public void setImageModels(List<ImageModel> imageModels) {
+        this.imageModels = imageModels;
+    }
 }

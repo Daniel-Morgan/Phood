@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableAutoConfiguration(
         exclude = {
@@ -22,6 +23,7 @@ import org.springframework.context.annotation.ImportResource;
 @EntityScan(basePackages = {"com.doughepi"})
 @ImportResource("classpath:/spring-config.xml")
 @SpringBootApplication
+@EnableScheduling
 public class PhoodApplication
 {
 
