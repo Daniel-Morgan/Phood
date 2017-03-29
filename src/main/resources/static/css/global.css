@@ -17,11 +17,8 @@ body {
 }
 
 #rowtest {
-    background-image: url("/img/phoodLogo2.PNG");
     background-size: 50%;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-color: transparent;
+    background: transparent url("/img/phoodLogo2.PNG") no-repeat top;
 }
 
 .header {
