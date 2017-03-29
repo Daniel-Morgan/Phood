@@ -11,9 +11,19 @@
 <div id="loginform">
     <div id="" class="container-fluid">
         <div id="rowTest" class="row">
+
+            <div class="col-lg-5 offset-lg-4">
+                <img src="/img/phoodLogo2.PNG" width="480px" height="135px"/>
+            </div>
+
+            <div class="col col-md-12">
+                <div class="image"/>
+            </div>
+
             <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
             <div class="col-lg-4 offset-lg-4">
                 <form action="/login" method="post" style="display: inline;">
+
                     <div class="form-group">
                         <label>Username</label>
                         <input type="text" class="form-control" placeholder="Enter Username" name="username"
@@ -25,13 +35,14 @@
                                name="password"
                                required="required"/>
                     </div>
-                    <button class="btn btn-success" type="submit">Login</button>
+                    <button class="button" type="submit">Login</button>
                 </form>
+
                 <form action="/" style="display: inline;">
-                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                    <button type="cancel" class="button">Cancel</button>
                 </form>
                 <form action="/register" style="display: inline;">
-                    <input type="submit" class="btn btn-primary" value="Create Account"/>
+                    <input type="submit" class="button" value="Create Account"/>
                 </form>
             </div>
         </div><!--end of col-->
