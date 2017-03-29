@@ -11,9 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
+import java.util.function.Supplier;
 
 /**
  * Created by dough on 2017-02-13.
@@ -43,7 +45,8 @@ public class UserAccountTests
     @Before
     public void setUp() throws Exception
     {
-        UserModel testUser = userRepository.findOne(TEST_ACCOUNT_ID);
+        UserModel testUser = userRepository.findOne(TEST_ACCOUNT_ID).orElse(null);
+
         if (testUser == null)
         {
             userService.createTestUser(TEST_ACCOUNT_ID,
@@ -74,20 +77,25 @@ public class UserAccountTests
         * 5. Check that the username matches our something random.
         * If it did, then the account was successfully edited and retrieved.
         */
-        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID);
+        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID).orElse(new UserModel());
 
         UUID randomUUID = UUID.randomUUID();
         userModel.setOther(randomUUID);
         userRepository.save(userModel);
 
-        UUID foundOther = userRepository.findOne(TEST_ACCOUNT_ID).getOther();
+        UUID foundOther = null;
+        try {
+            foundOther = userRepository.findOne(TEST_ACCOUNT_ID).orElseThrow((Supplier<Throwable>) () -> new UsernameNotFoundException("The user with that ID could not be located in the database.")).getOther();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
         Assert.assertEquals(randomUUID, foundOther);
     }
 
     @Test
     public void testFindByUsername() throws Exception
     {
-        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID);
+        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID).orElse(new UserModel());
         UserModel byUsername = userService.findByUsername(TEST_ACCOUNT_USERNAME);
         Assert.assertEquals(userModel, byUsername);
     }
@@ -95,7 +103,7 @@ public class UserAccountTests
     @Test
     public void testFindByEmail() throws Exception
     {
-        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID);
+        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID).orElse(new UserModel());
         UserModel byEmail = userService.findByEmail(TEST_ACCOUNT_EMAIL);
         Assert.assertEquals(userModel, byEmail);
     }

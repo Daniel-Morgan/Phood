@@ -51,10 +51,10 @@
     </bean>
     <!--END PERSISTENCE MANAGEMENT___________________________________________________________________________________-->
 
-    <bean id="userDetailsServiceImpl" class="com.doughepi.services.UserDetailsServiceImpl"/>
-
 
     <!--AUTHENTICATION_______________________________________________________________________________________________-->
+    <bean id="userDetailsServiceImpl" class="com.doughepi.services.UserDetailsServiceImpl"/>
+
     <security:http auto-config="true" use-expressions="true">
         <security:form-login login-page="/login" authentication-failure-url="/login?_error" default-target-url="/"/>
         <!--<security:intercept-url pattern="/profile" access="isAuthenticated()"/>-->
