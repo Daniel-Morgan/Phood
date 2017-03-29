@@ -2,6 +2,11 @@
     padding: 50px;
 }
 
+body {
+    /*background-size: contain;*/
+    /*background-image: url("/img/phoodLogo.png");*/
+    /*background-color: #ffffff;*/
+}
 
 .user-name {
     color: #c2c2c2;
@@ -11,24 +16,34 @@
 
 }
 
+#rowtest {
+    background-image: url("/img/phoodLogo2.PNG");
+    background-size: 50%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
 .header {
     text-transform: uppercase;
     font-weight: 900;
 }
 
 .black-bar{
-    border: 3px solid #292b2c;
+    border-style:solid;
+    border-width:3px;
+    border-color: #6CA0DC;
 }
 
 #rowTest {
-    margin-top: 15vh;
+    margin-top: 200px;
 }
 
-.search-container {
-    /*padding: 10px;*/
-    margin-bottom: 10px;
+button {
+    border-style: ridge;
+    background-color: #6CA0DC;
 }
 
-.search-result-container .search-result {
-    margin-bottom: 10px;
+.image {
+    padding: 25px;
 }
