@@ -1,5 +1,6 @@
 package com.doughepi.controllers;
 
+import com.doughepi.models.RecipeCategory;
 import com.doughepi.models.RecipeModel;
 import com.doughepi.repositories.RecipeRepository;
 import com.doughepi.repositories.UserRepository;
@@ -37,13 +38,15 @@ public class RecipeController {
 
     @RequestMapping("/new")
     public String showRecipeForm(Model model) {
+        model.addAttribute("categories", RecipeCategory.values());
         return "create-recipe";
     }
 
     @RequestMapping(params = {"recipeID"})
     public String showRecipePage(Model model, @RequestParam("recipeID") UUID recipeID) {
 
-        model.addAttribute("recipe", recipeRepository.findOne(recipeID));
+        model.addAttribute("recipe", recipeRepository.findOne(recipeID).get());
+
 
         return "recipe";
     }
@@ -55,19 +58,19 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/like", params = {"recipeID"}, method = RequestMethod.POST)
-    public int likeRecipe(@RequestParam("recipeID") UUID recipeID) {
+    public String likeRecipe(@RequestParam("recipeID") UUID recipeID) {
         RecipeModel recipe = recipeRepository.findOne(recipeID).orElse(new RecipeModel());
         recipe.setLikes(recipe.getLikes() + 1);
         recipeRepository.save(recipe);
-        return recipe.getLikes();
+        return "success";
     }
 
     @RequestMapping(value = "/dislike", params = {"recipeID"}, method = RequestMethod.POST)
-    public int dislikeRecipe(@RequestParam("recipeID") UUID recipeID) {
+    public String dislikeRecipe(@RequestParam("recipeID") UUID recipeID) {
         RecipeModel recipe = recipeRepository.findOne(recipeID).orElse(new RecipeModel());
         recipe.setLikes(recipe.getLikes() - 1);
         recipeRepository.save(recipe);
-        return recipe.getLikes();
+        return "success";
     }
 
 }

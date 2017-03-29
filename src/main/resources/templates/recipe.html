@@ -31,7 +31,7 @@
 
                         <label for="inputRecipeCategory">Recipe Category</label>
                         <p name="recipeCategory" class="form-control" id="inputRecipeCategory"
-                           th:text="${recipe.getRecipeCategory()}"
+                           th:text="${recipe.getRecipeCategory().getEnumText()}"
                            style="margin-bottom: 1rem;"></p>
 
                         <label for="inputRecipeLikes">Recipe Likes</label>

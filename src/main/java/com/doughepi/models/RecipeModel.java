@@ -26,7 +26,7 @@ public class RecipeModel {
     @ManyToOne(cascade = CascadeType.MERGE)
     private UserModel userModel;
 
-    @Column(name = "creation_date")
+    @Column(name = "creation_date", columnDefinition = "DATETIME NOT NULL DEFAULT NOW()")
     private Date creationDate;
 
     @Column(name = "recipe_name")
@@ -39,7 +39,7 @@ public class RecipeModel {
 
     @Column(name = "recipe_category")
     @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
-    private String recipeCategory;
+    private RecipeCategory recipeCategory;
 
     @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<IngredientModel> ingredientModels;
@@ -91,11 +91,11 @@ public class RecipeModel {
         this.recipeDescription = recipeDescription;
     }
 
-    public String getRecipeCategory() {
+    public RecipeCategory getRecipeCategory() {
         return recipeCategory;
     }
 
-    public void setRecipeCategory(String recipeCategory) {
+    public void setRecipeCategory(RecipeCategory recipeCategory) {
         this.recipeCategory = recipeCategory;
     }
 
