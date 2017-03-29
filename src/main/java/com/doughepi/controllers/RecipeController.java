@@ -43,7 +43,7 @@ public class RecipeController {
     @RequestMapping(params = {"recipeID"})
     public String showRecipePage(Model model, @RequestParam("recipeID") UUID recipeID) {
 
-        model.addAttribute("recipe", recipeRepository.findOne(recipeID));
+        model.addAttribute("recipe", recipeRepository.findOne(recipeID).get());
 
         return "recipe";
     }
