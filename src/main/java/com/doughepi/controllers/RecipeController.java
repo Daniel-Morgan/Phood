@@ -56,7 +56,7 @@ public class RecipeController {
 
     @RequestMapping(value = "/like", params = {"recipeID"}, method = RequestMethod.POST)
     public int likeRecipe(@RequestParam("recipeID") UUID recipeID) {
-        RecipeModel recipe = recipeRepository.findOne(recipeID);
+        RecipeModel recipe = recipeRepository.findOne(recipeID).orElse(new RecipeModel());
         recipe.setLikes(recipe.getLikes() + 1);
         recipeRepository.save(recipe);
         return recipe.getLikes();
@@ -64,7 +64,7 @@ public class RecipeController {
 
     @RequestMapping(value = "/dislike", params = {"recipeID"}, method = RequestMethod.POST)
     public int dislikeRecipe(@RequestParam("recipeID") UUID recipeID) {
-        RecipeModel recipe = recipeRepository.findOne(recipeID);
+        RecipeModel recipe = recipeRepository.findOne(recipeID).orElse(new RecipeModel());
         recipe.setLikes(recipe.getLikes() - 1);
         recipeRepository.save(recipe);
         return recipe.getLikes();

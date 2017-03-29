@@ -49,7 +49,7 @@ public class RegistrationValidationTests
             Assert.fail("Validation is disabled, these tests cannot run. Switch validation back on in the application" +
                                 ".properties file.");
         }
-        validUser = userRepository.findOne(UserAccountTests.TEST_ACCOUNT_ID);
+        validUser = userRepository.findOne(UserAccountTests.TEST_ACCOUNT_ID).orElse(new UserModel());
         validUser.setUserConfirmationPassword("password");
         errors = new BeanPropertyBindingResult(validUser, "validUser");
     }
