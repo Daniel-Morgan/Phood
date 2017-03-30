@@ -3,14 +3,9 @@
 }
 
 body {
-    height:100%;
-    width:100%;
-    background-image:url("/img/foodBackground.jpg");/*your background image*/
-    background-repeat:no-repeat;/*we want to have one single image not a repeated one*/
-    background-size:cover;/*this sets the image to fullscreen covering the whole screen*/
-    /*css hack for ie*/
-    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.image.jpg',sizingMethod='scale');
-    -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
+    /*background-size: contain;*/
+    /*background-image: url("/img/phoodLogo.png");*/
+    /*background-color: #ffffff;*/
 }
 
 .user-name {
@@ -35,6 +30,7 @@ body {
 }
 
 .black-bar{
+<<<<<<< Temporary merge branch 1
     border-style:solid;
     border-width:3px;
     border-color: #6CA0DC;
@@ -44,15 +40,27 @@ body {
     margin-top: 200px;
 }
 
-button, input[type=submit] {
+button {
     border-style: ridge;
     background-color: #6CA0DC;
 }
 
 .image {
     padding: 25px;
+=======
+    border: 3px solid #292b2c;
 }
 
-#rowContainer{
-    background-color: white;
+#rowTest {
+    margin-top: 15vh;
+}
+
+.search-container {
+    /*padding: 10px;*/
+    margin-bottom: 10px;
+}
+
+.search-result-container .search-result {
+    margin-bottom: 10px;
+>>>>>>> Temporary merge branch 2
 }

@@ -10,15 +10,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+
+    <style>
+        /*body {*/
+            /*background-image: url("/img/phoodLogo.png");*/
+            /*background-size: 50%;*/
+            /*background-position: center;*/
+            /*background-repeat: no-repeat;*/
+            /*background-color: transparent;*/
+        /*}*/
+    </style>
+
 </head>
 <body>
+
 <nav class="navbar navbar-toggleable-md navbar-light">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/">Phood</a>
+    <a class="navbar-brand" href="#">
+        <img src="/img/phoodLogo.png" width="40" height="40" alt=""/>
+        Phood
+    </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -26,7 +41,11 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+<<<<<<< Temporary merge branch 1
+                <a class="nav-link" href="/new">Recipes</a>
+=======
                 <a class="nav-link" href="/new">Create</a>
+>>>>>>> Temporary merge branch 2
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/profile">My Profile</a>
@@ -37,7 +56,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="button" type="submit">Search</button>
         </form>
     </div>
 </nav>
