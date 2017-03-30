@@ -1,6 +1,7 @@
 package com.doughepi.serializers;
 
 import com.doughepi.models.IngredientModel;
+import com.doughepi.models.RecipeCategory;
 import com.doughepi.models.RecipeModel;
 import com.google.gson.*;
 
@@ -19,7 +20,7 @@ public class RecipeModelDeserializer implements JsonDeserializer<RecipeModel> {
 
         String recipeName = recipeJson.get("name").getAsString();
         String recipeDescription = recipeJson.get("description").getAsString();
-        String recipeCategory = recipeJson.get("category").getAsString();
+        RecipeCategory recipeCategory = RecipeCategory.mapFrom(recipeJson.get("category").getAsString());
 
         IngredientModel[] ingredients = jsonDeserializationContext.deserialize(recipeJson.get("ingredientList"), IngredientModel[].class);
 
