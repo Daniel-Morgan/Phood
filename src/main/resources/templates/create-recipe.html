@@ -33,8 +33,15 @@
                                placeholder="Recipe Description" required="required" style="margin-bottom: 1rem;"/>
 
                         <label for="inputRecipeCategory">Recipe Category</label>
-                        <input name="recipeCategory" type="text" class="form-control" id="inputRecipeCategory"
-                               placeholder="Recipe Category" required="required" style="margin-bottom: 1rem;"/>
+                        <!--<input name="recipeCategory" type="text" class="form-control" id="inputRecipeCategory"-->
+                        <!--placeholder="Recipe Category" required="required" style="margin-bottom: 1rem;"/>-->
+
+                        <select id="inputRecipeCategory" class="custom-select">
+                            <option th:each="category : ${categories}" th:text="*{category.getEnumText()}">Open this
+                                select menu
+                            </option>
+                        </select>
+
                     </div>
 
                     <p>Ingredients</p>
