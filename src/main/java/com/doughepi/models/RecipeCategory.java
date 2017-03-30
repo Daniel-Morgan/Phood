@@ -27,4 +27,9 @@ public enum RecipeCategory {
     public String getEnumText() {
         return enumText;
     }
+
+    @Override
+    public String toString() {
+        return this.getEnumText();
+    }
 }

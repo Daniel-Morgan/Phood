@@ -38,8 +38,12 @@ public class RecipeModel {
     private String recipeDescription;
 
     @Column(name = "recipe_category")
-    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+    @Enumerated(EnumType.STRING)
     private RecipeCategory recipeCategory;
+
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
+    @Transient
+    private String categoryName;
 
     @OneToMany(mappedBy = "recipeModel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<IngredientModel> ingredientModels;
@@ -105,6 +109,10 @@ public class RecipeModel {
 
     public void setIngredientModels(List<IngredientModel> ingredientModels) {
         this.ingredientModels = ingredientModels;
+    }
+
+    public String getCategoryName() {
+        return recipeCategory.getEnumText();
     }
 
     public int getLikes() {
