@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Phood | Create a recipe</title>
@@ -29,8 +29,9 @@
                                placeholder="Recipe Name" required="required" style="margin-bottom: 1rem;"/>
 
                         <label for="inputRecipeDescription">Recipe Description</label>
-                        <input name="recipeDescription" type="text" class="form-control" id="inputRecipeDescription"
-                               placeholder="Recipe Description" required="required" style="margin-bottom: 1rem;"/>
+                        <textarea name="recipeDescription" type="text" class="form-control" id="inputRecipeDescription"
+                                  placeholder="Recipe Description" required="required" style="margin-bottom: 1rem;"
+                                  maxlength="255"></textarea>
 
                         <label for="inputRecipeCategory">Recipe Category</label>
                         <!--<input name="recipeCategory" type="text" class="form-control" id="inputRecipeCategory"-->

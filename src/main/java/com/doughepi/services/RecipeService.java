@@ -1,8 +1,10 @@
 package com.doughepi.services;
 
 import com.doughepi.models.IngredientModel;
+import com.doughepi.models.RecipeCategory;
 import com.doughepi.models.RecipeModel;
 import com.doughepi.models.UserModel;
+import com.doughepi.repositories.RecipeRepository;
 import com.doughepi.repositories.UserRepository;
 import com.doughepi.serializers.IngredientModelDeserializer;
 import com.doughepi.serializers.RecipeModelDeserializer;
@@ -12,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ajreicha on 3/16/17.
@@ -24,6 +28,9 @@ public class RecipeService {
     UserRepository userRepository;
     @Autowired
     UserService userService;
+
+    @Autowired
+    RecipeRepository recipeRepository;
 
 
     public void createRecipe(@RequestBody String recipeModel) {
@@ -48,6 +55,21 @@ public class RecipeService {
             System.out.println(model.getRecipeName());
         }
 
+    }
+
+
+    public List<List<RecipeModel>> getTopRecipeforCategories() {
+        List<List<RecipeModel>> categoryRecipeLists = new ArrayList<>();
+
+        for (RecipeCategory recipeCategory : RecipeCategory.values()) {
+            List<RecipeModel> recipeList = recipeRepository.getCategoryTopTen(recipeCategory.name());
+
+            if (recipeList != null && !recipeList.isEmpty()) {
+                categoryRecipeLists.add(recipeList);
+            }
+        }
+
+        return categoryRecipeLists;
     }
 
 
