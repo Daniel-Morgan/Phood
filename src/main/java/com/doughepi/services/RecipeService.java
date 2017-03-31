@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Date;
+
 /**
  * Created by ajreicha on 3/16/17.
  */
@@ -32,6 +34,7 @@ public class RecipeService {
         Gson gson = gsonBuilder.create();
 
         RecipeModel createdRecipe = gson.fromJson(recipeModel, RecipeModel.class);
+        createdRecipe.setCreationDate(new Date());
 
         //TODO validation
         UserModel currentLoggedInUser = userService.getCurrentLoggedInUser();
