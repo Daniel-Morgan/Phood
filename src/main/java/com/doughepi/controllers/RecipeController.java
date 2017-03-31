@@ -46,8 +46,6 @@ public class RecipeController {
     public String showRecipePage(Model model, @RequestParam("recipeID") UUID recipeID) {
 
         model.addAttribute("recipe", recipeRepository.findOne(recipeID).get());
-
-
         return "recipe";
     }
 
