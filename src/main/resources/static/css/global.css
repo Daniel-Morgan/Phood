@@ -3,21 +3,15 @@
 }
 
 .indexBody {
-    background-image: url("/img/indexBackground.jpg");
     background-size: 100%;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-color: transparent;
+    background: transparent url("/img/indexBackground.jpg") no-repeat fixed bottom;
     height: auto;
     width: auto;
 }
 
 .loginBody {
-    background-image: url("/img/loginBackground.jpg");
     background-size: 100%;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-color: transparent;
+    background: transparent url("/img/loginBackground.jpg") no-repeat bottom;
     height: auto;
     width: auto;
 }
