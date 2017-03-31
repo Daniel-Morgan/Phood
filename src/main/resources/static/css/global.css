@@ -2,14 +2,32 @@
     padding: 50px;
 }
 
-body {
-    /*background-size: contain;*/
-    /*background-image: url("/img/phoodLogo.png");*/
-    /*background-color: #ffffff;*/
+.indexBody {
+    background-image: url("/img/indexBackground.jpg");
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: auto;
+    width: auto;
+}
+
+.loginBody {
+    background-image: url("/img/loginBackground.jpg");
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: auto;
+    width: auto;
 }
 
 .user-name {
     color: #c2c2c2;
+}
+
+html{
+    height: 100%;
 }
 
 .full-name {
@@ -19,7 +37,7 @@ body {
 #rowtest {
     background-image: url("/img/phoodLogo2.PNG");
     background-size: 50%;
-    background-position: top;
+    background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
 }
@@ -30,29 +48,20 @@ body {
 }
 
 .black-bar{
-<<<<<<< Temporary merge branch 1
     border-style:solid;
     border-width:3px;
     border-color: #6CA0DC;
 }
 
-#rowTest {
-    margin-top: 200px;
-}
-
-button {
+button, input{
+    background-color: white;
+    background-size: 75px;
+    background-position: top;
     border-style: ridge;
-    background-color: #6CA0DC;
 }
 
 .image {
     padding: 25px;
-=======
-    border: 3px solid #292b2c;
-}
-
-#rowTest {
-    margin-top: 15vh;
 }
 
 .search-container {
@@ -62,5 +71,4 @@ button {
 
 .search-result-container .search-result {
     margin-bottom: 10px;
->>>>>>> Temporary merge branch 2
 }
