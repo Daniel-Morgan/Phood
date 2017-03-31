@@ -61,7 +61,12 @@ button, input{
 }
 
 .category-container {
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.category-name {
+    color: white;
 }
 
 
