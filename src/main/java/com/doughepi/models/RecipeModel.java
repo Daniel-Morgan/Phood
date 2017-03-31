@@ -33,7 +33,7 @@ public class RecipeModel {
     @Field(index= Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String recipeName;
 
-    @Column(name = "recipe_description")
+    @Column(name = "recipe_description", columnDefinition = "TEXT")
     @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String recipeDescription;
 
