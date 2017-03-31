@@ -17,10 +17,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/profile">My Profile</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login">Log In</a>
+            <li sec:authorize="isAnonymous()" class="nav-item">
+                <a class="nav-link btn btn-outline-primary" href="/login">Log In</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <a href="/logout" class="btn btn-outline-danger " >Logout</a>
             </li>
         </ul>
+        <!---->
         <form id="search-form" class="form-inline my-2 my-lg-0">
             <input id="query-text" class="form-control mr-sm-2" type="text" placeholder="Search"/>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
