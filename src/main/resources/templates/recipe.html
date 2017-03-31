@@ -84,17 +84,34 @@
             dislike();
         });
         function like() {
-            $.ajax({
-                url: '/recipe/like' + location.search,
-                method: 'post'
-            })
+            var uuid = location.search.substring(1);
+            var like = localStorage.getItem(uuid);
+            if (like != "like") {
+                $.ajax({
+                    url: '/recipe/like' + location.search,
+                    method: 'post'
+                })
+                if (like == "null") {
+                    localStorage.setItem(uuid, "like");
+                } else if (like == "dislike") {
+                    localStorage.setItem(uuid, "null");
+                }
+            }
         }
-
         function dislike() {
-            $.ajax({
-                url: '/recipe/dislike' + location.search,
-                method: 'post'
-            })
+            var uuid = location.search.substring(1);
+            var like = localStorage.getItem(uuid);
+            if (like != "dislike") {
+                $.ajax({
+                    url: '/recipe/dislike' + location.search,
+                    method: 'post'
+                })
+                if (like == "null") {
+                    localStorage.setItem(uuid, "dislike");
+                } else if (like == "like") {
+                    localStorage.setItem(uuid, "null");
+                }
+            }
         }
     })
 </script>
