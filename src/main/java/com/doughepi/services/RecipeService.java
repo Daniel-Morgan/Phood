@@ -73,4 +73,17 @@ public class RecipeService {
     }
 
 
+    public List<List<RecipeModel>> getAllByCategory(UserModel currentLoggedInUser) {
+        List<List<RecipeModel>> resultList = new ArrayList<>();
+        for (RecipeCategory recipeCategory : RecipeCategory.values()) {
+            List<RecipeModel> recipeModelList = recipeRepository.findRecipeModelsByRecipeCategoryAndUserModel(
+                    recipeCategory,
+                    currentLoggedInUser);
+
+            if (recipeModelList != null && !recipeModelList.isEmpty()) {
+                resultList.add(recipeModelList);
+            }
+        }
+        return resultList;
+    }
 }

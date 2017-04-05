@@ -29,21 +29,11 @@ public class StartupService {
 
     @Scheduled(fixedRate = Long.MAX_VALUE)
     public void indexExisting() {
-
-        logger.info("Indexing now, son.");
-
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         try {
             fullTextEntityManager.createIndexer().startAndWait();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-
-
-        for (List<RecipeModel> recipeModels : recipeService.getTopRecipeforCategories()) {
-            for (RecipeModel recipeModel : recipeModels) {
-                logger.info(recipeModel.getRecipeName());
-            }
         }
     }
 
