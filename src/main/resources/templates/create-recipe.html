@@ -15,7 +15,7 @@
             <div class="col-lg-4 offset-lg-8">
                 <form action="/" style="display: inline;">
                     <button id="save-button" type="button" class="btn btn-success">Save</button>
-                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                    <button id="cancel-button" type="cancel" class="btn btn-danger">Cancel</button>
                 </form>
             </div>
         </div>
@@ -157,6 +157,12 @@
             }
         }
     })
+</script>
+
+<script type="text/javascript">
+    document.getElementById("save-button").onclick = function () {
+        location.href = "http://localhost:8080/";
+    };
 </script>
 
 </body>
