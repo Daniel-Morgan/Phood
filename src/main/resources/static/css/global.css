@@ -20,7 +20,9 @@
     color: #c2c2c2;
 }
 
-html {
+
+
+html{
     height: 100%;
     padding-top: 25px;
 }
@@ -67,6 +69,11 @@ button, input {
 .category-name {
     color: white;
 }
+
+.profile-category-name {
+    color: black;
+}
+
 
 .search-container {
     /*padding: 10px;*/
