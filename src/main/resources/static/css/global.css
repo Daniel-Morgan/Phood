@@ -69,6 +69,10 @@ button, input{
     color: white;
 }
 
+.profile-category-name {
+    color: black;
+}
+
 
 .search-container {
     /*padding: 10px;*/
