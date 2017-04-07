@@ -9,54 +9,62 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet"/>
 
 </head>
 <body>
 <nav th:replace="_navbar :: navbar"></nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12">
-            <div id="name-wrapper">
-                <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
-                <h5 class="user-name" th:text="${username}">@ajreicha</h5>
-                <h3 class="full-name" th:text="${name}">Adam Reichanadter</h3>
-            </div>
-            <hr class="black-bar"/>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div th:each="category : ${profileCategories}" class="row category-container">
-                        <div class="col-lg-12">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h3 class="profile-category-name"
-                                        th:text="*{category.get(0).getRecipeCategory().getEnumText()}"></h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card-columns">
-                                        <div th:each="recipe : *{category}" class="card">
-                                            <div class="card-block">
-                                                <h4 class="card-title" th:text="*{recipe.getRecipeName()}">Card
-                                                    title</h4>
-                                                <p class="card-text" th:text="*{recipe.getRecipeDescription()}">This is
-                                                    a longer
-                                                    card
-                                                    with
-                                                    supporting text below as a natural lead-in to
-                                                    additional content. This content is a little bit longer.</p>
-                                                <p class="card-text">
-                                                    <small class="text-muted"
-                                                           th:text="*{recipe.getCreationDate()}"></small>
-                                                </p>
+<div class="profileBackground">
 
-                                                <a class="btn btn-outline-primary"
-                                                   th:href="@{/recipe?recipeID={path}(path=${recipe.getRecipeID()})}">
-                                                    View
-                                                </a>
-                                            </div>
+    <img align="left" class="profileImage" src="/img/profileBackground.jpg"/>
+    <img align="left" class="profileThumbnail thumbnail" src="/img/user.png"/>
+    <div class="col-lg-12">
+        <div id="name-wrapper">
+            <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
+            <h5 class="user-name" th:text="${username}">@ajreicha</h5>
+            <h3 class="full-name" th:text="${name}">Adam Reichanadter</h3>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="space"/>
+    </div>
+
+    <div class="col-lg-12">
+        <hr class="black-bar"/>
+        <div class="row">
+            <div class="col-lg-12">
+                <div th:each="category : ${profileCategories}" class="row category-container">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3 class="profile-category-name"
+                                    th:text="*{category.get(0).getRecipeCategory().getEnumText()}"></h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card-columns">
+                                    <div th:each="recipe : *{category}" class="card">
+                                        <div class="card-block">
+                                            <h4 class="card-title" th:text="*{recipe.getRecipeName()}">Card
+                                                title</h4>
+                                            <p class="card-text" th:text="*{recipe.getRecipeDescription()}">This
+                                                is
+                                                a longer
+                                                card
+                                                with
+                                                supporting text below as a natural lead-in to
+                                                additional content. This content is a little bit longer.</p>
+                                            <p class="card-text">
+                                                <small class="text-muted"
+                                                       th:text="*{recipe.getCreationDate()}"></small>
+                                            </p>
+
+                                            <a class="btn btn-outline-primary"
+                                               th:href="@{/recipe?recipeID={path}(path=${recipe.getRecipeID()})}">
+                                                View
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -68,6 +76,8 @@
         </div>
     </div>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
         integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
         crossorigin="anonymous"></script>

@@ -1,16 +1,16 @@
-.container-fluid{
+.container-fluid {
     padding: 50px;
 }
 
 .indexBody {
-    background-size: 100%;
-    background: transparent url("/img/indexBackground.jpg") no-repeat fixed bottom;
-    height: auto;
-    width: auto;
+    background: url("/img/indexBackground.jpg") no-repeat bottom fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .loginBody {
-    background-size: 100%;
     background: transparent url("/img/loginBackground.jpg") no-repeat bottom;
     height: auto;
     width: auto;
@@ -20,10 +20,9 @@
     color: #c2c2c2;
 }
 
-
-
-html{
+html {
     height: 100%;
+    padding-top: 25px;
 }
 
 .full-name {
@@ -31,7 +30,7 @@ html{
 }
 
 #rowtest {
-    background-image: url("/img/phoodLogo2.PNG");
+    background-image: url("/img/phoodBanner.PNG");
     background-size: 50%;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,21 +42,22 @@ html{
     font-weight: 900;
 }
 
-.black-bar{
-    border-style:solid;
-    border-width:3px;
-    border-color: #6CA0DC;
+.black-bar {
+    border-style: double;
+    border-width: 3px;
+    border-color: #a8a8a8;
+    border-length: 100%;
 }
 
-button, input{
+button, input {
     background-color: white;
     background-size: 75px;
     background-position: top;
     border-style: ridge;
 }
 
-.image {
-    padding: 25px;
+.space {
+    padding: 15px;
 }
 
 .category-container {
@@ -73,7 +73,6 @@ button, input{
     color: black;
 }
 
-
 .search-container {
     /*padding: 10px;*/
     margin-bottom: 10px;
@@ -83,20 +82,28 @@ button, input{
     margin-bottom: 10px;
 }
 
-.search-container {
-    /*padding: 10px;*/
+.profileBackground img.profileImage {
+    z-index: 0;
+    width: 100%;
     margin-bottom: 10px;
 }
 
-.search-result-container .search-result {
-    margin-bottom: 10px;
+.profileThumbnail {
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 10%;
 }
 
+@media (max-width: 3594px) {
 
+    .fb-profile-text > h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
 
-
-
-.category-container {
-    margin-bottom: 20px;
+    .fb-image-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
 }
-
