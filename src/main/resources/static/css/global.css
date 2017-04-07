@@ -1,5 +1,6 @@
 .container-fluid {
-    padding: 50px;
+    margin-top: 40px;
+    background-color: #eeeeee;
 }
 
 .indexBody {
@@ -23,6 +24,7 @@
 html {
     height: 100%;
     padding-top: 25px;
+    background-color: #eee;
 }
 
 .full-name {
@@ -83,14 +85,24 @@ button, input {
 }
 
 .profileBackground img.profileImage {
-    z-index: 0;
+    z-index: -100;
     width: 100%;
     margin-bottom: 10px;
 }
 
-.profileThumbnail {
-    margin: -90px 10px 0px 50px;
-    z-index: 9;
+#name-wrapper {
+    position: relative;
+    width: 40%;
+    z-index: 1000;
+    margin: -90px 10px 0 0;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#name-wrapper img {
+    margin-right: 20px;
     width: 10%;
 }
 
