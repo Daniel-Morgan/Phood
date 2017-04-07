@@ -18,8 +18,11 @@ public class RecipeModelDeserializer implements JsonDeserializer<RecipeModel> {
 
         JsonObject recipeJson = jsonElement.getAsJsonObject();
 
+        System.out.println(recipeJson.toString());
+
         String recipeName = recipeJson.get("name").getAsString();
         String recipeDescription = recipeJson.get("description").getAsString();
+        String preparationInstructions = recipeJson.get("preparationInstructions").getAsString();
         RecipeCategory recipeCategory = RecipeCategory.mapFrom(recipeJson.get("category").getAsString());
 
         IngredientModel[] ingredients = jsonDeserializationContext.deserialize(recipeJson.get("ingredientList"), IngredientModel[].class);
@@ -32,6 +35,7 @@ public class RecipeModelDeserializer implements JsonDeserializer<RecipeModel> {
         recipeModel.setRecipeName(recipeName);
         recipeModel.setRecipeDescription(recipeDescription);
         recipeModel.setRecipeCategory(recipeCategory);
+        recipeModel.setRecipePreparationInstructions(preparationInstructions);
 
         return recipeModel;
     }

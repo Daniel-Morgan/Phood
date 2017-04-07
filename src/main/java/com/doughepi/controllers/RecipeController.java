@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -45,7 +46,10 @@ public class RecipeController {
     @RequestMapping(params = {"recipeID"})
     public String showRecipePage(Model model, @RequestParam("recipeID") UUID recipeID) {
 
-        model.addAttribute("recipe", recipeRepository.findOne(recipeID).get());
+        RecipeModel recipeModel = recipeRepository.findOne(recipeID).get();
+        model.addAttribute("recipe", recipeModel);
+        List<RecipeModel> topTwoForUser = recipeService.getTopTwoForUser(recipeModel.getUserModel());
+        model.addAttribute("topTwo", topTwoForUser);
         return "recipe";
     }
 

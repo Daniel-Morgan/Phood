@@ -30,12 +30,15 @@ public class RecipeModel {
     private Date creationDate;
 
     @Column(name = "recipe_name")
-    @Field(index= Index.YES, analyze = Analyze.YES, store = Store.NO)
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String recipeName;
 
     @Column(name = "recipe_description", columnDefinition = "TEXT")
-    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String recipeDescription;
+
+    @Column(name = "recipe_preperation_instructions")
+    private String recipePreparationInstructions;
 
     @Column(name = "recipe_category")
     @Enumerated(EnumType.STRING)
@@ -95,6 +98,14 @@ public class RecipeModel {
         this.recipeDescription = recipeDescription;
     }
 
+    public String getRecipePreparationInstructions() {
+        return recipePreparationInstructions;
+    }
+
+    public void setRecipePreparationInstructions(String recipePreparationInstructions) {
+        this.recipePreparationInstructions = recipePreparationInstructions;
+    }
+
     public RecipeCategory getRecipeCategory() {
         return recipeCategory;
     }
@@ -113,6 +124,10 @@ public class RecipeModel {
 
     public String getCategoryName() {
         return recipeCategory.getEnumText();
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public int getLikes() {

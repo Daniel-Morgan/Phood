@@ -27,12 +27,16 @@
                         <label for="inputRecipeName">Recipe Name</label>
                         <input name="recipeName" type="text" class="form-control" id="inputRecipeName"
                                placeholder="Recipe Name" required="required" style="margin-bottom: 1rem;"/>
+                    </div>
 
+                    <div class="form-group">
                         <label for="inputRecipeDescription">Recipe Description</label>
-                        <textarea name="recipeDescription" type="text" class="form-control" id="inputRecipeDescription"
+                        <textarea name="recipeDescription" class="form-control" id="inputRecipeDescription"
                                   placeholder="Recipe Description" required="required"
                                   style="margin-bottom: 1rem;"></textarea>
+                    </div>
 
+                    <div class="form-group">
                         <label for="inputRecipeCategory">Recipe Category</label>
                         <!--<input name="recipeCategory" type="text" class="form-control" id="inputRecipeCategory"-->
                         <!--placeholder="Recipe Category" required="required" style="margin-bottom: 1rem;"/>-->
@@ -42,7 +46,14 @@
                                 select menu
                             </option>
                         </select>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="inputRecipePreparationInstructions">Preparation Instructions</label>
+                        <textarea name="recipePreparationInstructions" class="form-control"
+                                  id="inputRecipePreparationInstructions"
+                                  placeholder="Preparation Instructions"
+                                  style="margin-bottom: 1rem;"></textarea>
                     </div>
 
                     <p>Ingredients</p>
@@ -120,6 +131,7 @@
                 name: $("#inputRecipeName").val(),
                 description: $("#inputRecipeDescription").val(),
                 category: $("#inputRecipeCategory").val(),
+                preparationInstructions: $("#inputRecipePreparationInstructions").val(),
                 ingredientList: getIngredients()
             };
 
