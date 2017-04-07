@@ -30,7 +30,7 @@ html {
 }
 
 #rowtest {
-    background-image: url("/img/phoodLogo2.PNG");
+    background-image: url("/img/phoodBanner.PNG");
     background-size: 50%;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,9 +43,10 @@ html {
 }
 
 .black-bar {
-    border-style: solid;
+    border-style: double;
     border-width: 3px;
-    border-color: #6CA0DC;
+    border-color: #a8a8a8;
+    border-length: 100%;
 }
 
 button, input {
@@ -55,8 +56,8 @@ button, input {
     border-style: ridge;
 }
 
-.image {
-    padding: 25px;
+.space {
+    padding: 15px;
 }
 
 .category-container {
@@ -81,16 +82,28 @@ button, input {
     margin-bottom: 10px;
 }
 
-.search-container {
-    /*padding: 10px;*/
+.profileBackground img.profileImage {
+    z-index: 0;
+    width: 100%;
     margin-bottom: 10px;
 }
 
-.search-result-container .search-result {
-    margin-bottom: 10px;
+.profileThumbnail {
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 10%;
 }
 
-.category-container {
-    margin-bottom: 20px;
-}
+@media (max-width: 3594px) {
 
+    .fb-profile-text > h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .fb-image-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+}
