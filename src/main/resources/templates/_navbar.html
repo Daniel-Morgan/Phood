@@ -22,6 +22,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="/profile">My Profile</a>
             </li>
+        </ul>
+
+        <!---->
+        <form id="search-form" class="form-inline my-2 my-lg-0">
+            <input id="query-text" class="form-control mr-sm-2" type="text" placeholder="Search"/>
+            <button class="btn my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav">
             <li sec:authorize="isAnonymous()" class="nav-item">
                 <a class="nav-link btn btn-success" href="/login">Log In</a>
             </li>
@@ -29,11 +38,6 @@
                 <a href="/logout" class="btn btn-danger ">Logout</a>
             </li>
         </ul>
-        <!---->
-        <form id="search-form" class="form-inline my-2 my-lg-0">
-            <input id="query-text" class="form-control mr-sm-2" type="text" placeholder="Search"/>
-            <button class="btn my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 
 
