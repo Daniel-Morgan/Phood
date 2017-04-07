@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by ajreicha on 3/16/17.
@@ -85,5 +86,10 @@ public class RecipeService {
             }
         }
         return resultList;
+    }
+
+    public List<RecipeModel> getTopTwoForUser(UserModel userModel) {
+        return userModel.getRecipeModels().stream().sorted((recipeModel, t1) -> t1.getLikes() - recipeModel.getLikes())
+                .limit(2).collect(Collectors.toList());
     }
 }
