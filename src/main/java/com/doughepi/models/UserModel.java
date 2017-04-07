@@ -1,11 +1,8 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -15,8 +12,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "\"user\"")
-public class UserModel
-{
+public class UserModel {
     //Primary key for Hibernate.
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -62,110 +58,88 @@ public class UserModel
     private List<RecipeModel> recipeModels;
 
 
-
-    public String getUserUsername()
-    {
+    public String getUserUsername() {
         return userUsername;
     }
 
-    public void setUserUsername(String userUsername)
-    {
+    public void setUserUsername(String userUsername) {
         this.userUsername = userUsername;
     }
 
-    public String getUserPassword()
-    {
+    public String getUserPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassword)
-    {
+    public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
 
-    public String getUserConfirmationPassword()
-    {
+    public String getUserConfirmationPassword() {
         return userConfirmationPassword;
     }
 
-    public void setUserConfirmationPassword(String userConfirmationPassword)
-    {
+    public void setUserConfirmationPassword(String userConfirmationPassword) {
         this.userConfirmationPassword = userConfirmationPassword;
     }
 
-    public String getUserEmail()
-    {
+    public String getUserEmail() {
         return userEmail;
     }
 
-    public void setUserEmail(String userEmail)
-    {
+    public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
 
-    public String getUserFirstName()
-    {
+    public String getUserFirstName() {
         return userFirstName;
     }
 
-    public void setUserFirstName(String userFirstName)
-    {
+    public void setUserFirstName(String userFirstName) {
         this.userFirstName = userFirstName;
     }
 
-    public String getUserMiddleInitial()
-    {
+    public String getUserMiddleInitial() {
         return userMiddleInitial;
     }
 
-    public void setUserMiddleInitial(String userMiddleInitial)
-    {
+    public void setUserMiddleInitial(String userMiddleInitial) {
         this.userMiddleInitial = userMiddleInitial;
     }
 
-    public String getUserLastName()
-    {
+    public String getUserLastName() {
         return userLastName;
     }
 
-    public void setUserLastName(String userLastName)
-    {
+    public void setUserLastName(String userLastName) {
         this.userLastName = userLastName;
     }
 
-    public Set<RoleModel> getRoleSet()
-    {
+    public Set<RoleModel> getRoleSet() {
         return roleSet;
     }
 
-    public void setRoleSet(Set<RoleModel> roleSet)
-    {
+    public void setRoleSet(Set<RoleModel> roleSet) {
         this.roleSet = roleSet;
     }
 
-    public UUID getOther()
-    {
+    public UUID getOther() {
         return other;
     }
 
-    public void setOther(UUID other)
-    {
+    public void setOther(UUID other) {
         this.other = other;
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         return obj instanceof UserModel && ((UserModel) obj).getUserID().equals(getUserID());
     }
 
-    public UUID getUserID()
-    {
+    public UUID getUserID() {
         return userID;
     }
 
-    public void setUserID(UUID userID)
-    {
+    public void setUserID(UUID userID) {
         this.userID = userID;
     }
 
