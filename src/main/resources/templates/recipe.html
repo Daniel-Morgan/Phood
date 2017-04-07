@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Phood | Recipe</title>
@@ -9,65 +9,10 @@
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="com.doughepi.models.RecipeModel"*/-->
-<div id="recipeform">
+<div>
+    <div class="container-fluid">
 
-
-    <div id="" class="container-fluid">
-        <div class="row" id="button-row">
-        </div>
-        <div id="rowTest" class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <form id="recipe-form" method="post" style="display: inline;">
-
-                    <div class="form-group">
-                        <label for="inputRecipeName">Recipe Name</label>
-                        <p th:text="${recipe.getRecipeName()}" name="recipeName" class="form-control"
-                           id="inputRecipeName"
-                           style="margin-bottom: 1rem;"></p>
-
-                        <label for="inputRecipeDescription">Recipe Description</label>
-                        <p name="recipeDescription" class="form-control" id="inputRecipeDescription"
-                           th:text="${recipe.getRecipeDescription()}"
-                           style="margin-bottom: 1rem;"></p>
-
-                        <label for="inputRecipeCategory">Recipe Category</label>
-                        <p name="recipeCategory" class="form-control" id="inputRecipeCategory"
-                           th:text="${recipe.getRecipeCategory().getEnumText()}"
-                           style="margin-bottom: 1rem;"></p>
-
-                        <label for="inputRecipeLikes">Recipe Likes</label>
-                        <p th:text="${recipe.getLikes()}" class="form-control"
-                           id="inputRecipeLikes"
-                           style="margin-bottom: 1rem;"></p>
-                    </div>
-
-                    <p>Ingredients</p>
-                    <div th:each="ingredient : *{recipe.getIngredientModels()}" id="ingredient-container"
-                         class="form-group">
-                        <div id="ingredient-template" class="row">
-                            <div class="col-2">
-                                <p th:text="${ingredient.getIngredientQuantity()}"
-                                   class="ingredient-quantity form-control"></p>
-                            </div>
-                            <div class="col-3">
-                                <p th:text="${ingredient.getIngredientUnit()}"
-                                   class="ingredient-unit form-control"></p>
-                            </div>
-                            <div class="col-6">
-                                <p th:text="${ingredient.getIngredientName()}"
-                                   class="ingredient-name form-control"></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button id="like-button" type="button" class="btn btn-success">Like</button>
-                    <button id="dislike-button" type="button" class="btn btn-danger">Dislike</button>
-
-                </form><!--end of form-->
-
-            </div><!--end of col-->
-        </div><!--end of row-->
-    </div><!--end of container fluid hi-->
+    </div>
 </div>
 
 <script
@@ -91,7 +36,7 @@
                 $.ajax({
                     url: '/recipe/like' + location.search,
                     method: 'post'
-                })
+                });
                 if (like == "null") {
                     localStorage.setItem(uuid, "like");
                 } else if (like == "dislike") {
@@ -99,6 +44,7 @@
                 }
             }
         }
+
         function dislike() {
             var uuid = location.search.substring(1);
             var like = localStorage.getItem(uuid);
@@ -106,7 +52,7 @@
                 $.ajax({
                     url: '/recipe/dislike' + location.search,
                     method: 'post'
-                })
+                });
                 if (like == "null") {
                     localStorage.setItem(uuid, "dislike");
                 } else if (like == "like") {

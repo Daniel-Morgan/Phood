@@ -1,5 +1,9 @@
 .container-fluid {
-    margin-top: 40px;
+    height: 100%;
+    padding-top: 56px;
+}
+
+.grey-background {
     background-color: #eeeeee;
 }
 
@@ -13,8 +17,8 @@
 
 .loginBody {
     background: transparent url("/img/loginBackground.jpg") no-repeat bottom;
-    height: auto;
-    width: auto;
+    height: 100%;
+    width: 100%;
 }
 
 .user-name {
@@ -23,20 +27,19 @@
 
 html {
     height: 100%;
-    padding-top: 25px;
     background-color: #eee;
+}
+
+body {
+    height: 100%;
 }
 
 .full-name {
 
 }
 
-#rowtest {
-    background-image: url("/img/phoodBanner.PNG");
-    background-size: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
+#rowContainer {
+    margin-top: 25vh;
 }
 
 .header {
@@ -45,16 +48,13 @@ html {
 }
 
 .black-bar {
-    border-style: double;
-    border-width: 3px;
-    border-color: #a8a8a8;
+    border: 3px double #a8a8a8;
     border-length: 100%;
 }
 
 button, input {
-    background-color: white;
     background-size: 75px;
-    background-position: top;
+    background: white top;
     border-style: ridge;
 }
 
