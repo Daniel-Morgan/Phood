@@ -1,28 +1,40 @@
-.container-fluid{
-    padding: 50px;
+.container-fluid {
+    height: 100%;
+    padding-top: 80px;
+}
+
+.grey-background {
+    background-color: #eeeeee;
 }
 
 .indexBody {
-    background-size: 100%;
-    background: transparent url("/img/indexBackground.jpg") no-repeat fixed bottom;
-    height: auto;
-    width: auto;
+    background: url("/img/indexBackground.jpg") no-repeat bottom fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .loginBody {
-    background-size: 100%;
     background: transparent url("/img/loginBackground.jpg") no-repeat bottom;
-    height: auto;
-    width: auto;
+    height: 100%;
+    width: 100%;
 }
 
 .user-name {
     color: #c2c2c2;
 }
 
+html {
+    height: 100%;
+    background-color: #eee;
+}
 
+.recipe-name {
+    display: inline;
+}
 
-html{
+body {
     height: 100%;
 }
 
@@ -33,6 +45,8 @@ html{
 #rowtest {
     background-size: 50%;
     background: transparent url("/img/phoodLogo2.PNG") no-repeat center;
+#rowContainer {
+    margin-top: 25vh;
 }
 
 .header {
@@ -40,18 +54,19 @@ html{
     font-weight: 900;
 }
 
-.black-bar{
-    border: 3px solid #6CA0DC;
+
+.black-bar {
+    border: 3px double #a8a8a8;
 }
 
-button, input{
+button, input {
     background-size: 75px;
     background: white top;
     border-style: ridge;
 }
 
-.image {
-    padding: 25px 0 25px 0;
+.space {
+    padding: 15px;
 }
 
 .category-container {
@@ -63,14 +78,8 @@ button, input{
     color: white;
 }
 
-
-.search-container {
-    /*padding: 10px;*/
-    margin-bottom: 10px;
-}
-
-.search-result-container .search-result {
-    margin-bottom: 10px;
+.profile-category-name {
+    color: black;
 }
 
 .search-container {
@@ -82,11 +91,55 @@ button, input{
     margin-bottom: 10px;
 }
 
-
-
-
-
-.category-container {
-    margin-bottom: 20px;
+.profileBackground img.profileImage {
+    z-index: -100;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
+#name-wrapper {
+    position: relative;
+    width: 40%;
+    z-index: 1000;
+    margin: -90px 10px 0 0;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.profile-container {
+    border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.profile-container img {
+    margin-right: 20px;
+    width: 15%;
+    height: 100%;
+}
+
+#name-wrapper img {
+    margin-right: 20px;
+    width: 10%;
+}
+
+.star {
+    color: gold;
+}
+
+@media (max-width: 3594px) {
+
+    .fb-profile-text > h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .fb-image-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+}

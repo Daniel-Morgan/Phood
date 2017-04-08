@@ -1,6 +1,7 @@
 package com.doughepi.controllers;
 
 import com.doughepi.models.UserModel;
+import com.doughepi.services.RecipeService;
 import com.doughepi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class ProfileController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    RecipeService recipeService;
+
     @RequestMapping
     public String showProfile(Model model) {
         UserModel currentLoggedInUser = userService.getCurrentLoggedInUser();
@@ -25,7 +29,7 @@ public class ProfileController {
         model.addAttribute("name", String.format("%s %s %s", currentLoggedInUser.getUserFirstName(),
                 currentLoggedInUser.getUserMiddleInitial(),
                 currentLoggedInUser.getUserLastName()));
-        model.addAttribute("recipes", currentLoggedInUser.getRecipeModels());
+        model.addAttribute("profileCategories", recipeService.getAllByCategory(currentLoggedInUser));
 
         return "profile";
     }
