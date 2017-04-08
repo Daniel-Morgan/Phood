@@ -49,13 +49,13 @@
                     <div id="ingredient-container" class="form-group">
                         <div id="ingredient-template" class="row" style="display: none; margin-bottom: 1rem;">
                             <div class="col-2">
-                                <input type="number" class="ingredient-quantity form-control" placeholder="1"/>
+                                <input type="number" class="ingredient-quantity form-control" placeholder="Quantity"/>
                             </div>
                             <div class="col-3">
-                                <input type="text" class="ingredient-unit form-control" placeholder="Cup"/>
+                                <input type="text" class="ingredient-unit form-control" placeholder="Unit"/>
                             </div>
                             <div class="col-6">
-                                <input type="text" class="ingredient-name form-control" placeholder="Milk"/>
+                                <input type="text" class="ingredient-name form-control" placeholder="Description"/>
                             </div>
                             <div class="col-1">
                                 <button id="remove-button" type="button" class="btn btn-danger">Remove</button>
@@ -79,6 +79,9 @@
 <script>
     jQuery(document).ready(function () {
         var index = 1;
+        var count = 0;
+
+
 
 
         var $recipeForm = $("#recipe-form");
@@ -107,8 +110,10 @@
             $removeButton.attr({id: "button-" + index});
 
             $removeButton.click(function () {
-                $newIngredientRow.remove();
-                index--;
+                if (count > 1) {
+                    $newIngredientRow.remove();
+                    index--;
+                }
             });
 
             $newIngredientRow.show();
@@ -123,22 +128,24 @@
                 ingredientList: getIngredients()
             };
 
+            var successHandler = function (data, textStatus, jqXHR) {
+                console.log("Completed.")
+              window.location = "/profile";
+            };
+
+
             $.ajax({
                 url: '/recipe/new?_submit',
                 method: 'post',
                 contentType: 'application/json; charset=UTF-8',
                 data: JSON.stringify(recipeInfo),
                 dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                }
+                success: successHandler
             });
 
             function getIngredients() {
                 var ingredients = [];
                 $("#ingredient-container").find("> .row").each(function () {
-
-                    console.log("Hello.");
 
                     var $currentRow = $(this);
                     if ($currentRow.attr('id') !== "ingredient-template") {
@@ -156,6 +163,9 @@
                 return ingredients;
             }
         }
+
+        duplicateAndAppend();
+        count++;
     })
 </script>
 

@@ -21,17 +21,17 @@
 
                     <div class="form-group">
                         <label for="inputRecipeName">Recipe Name</label>
-                        <p th:text="${recipe.getRecipeName()}" name="recipeName" class="form-control"
+                        <p th:text="${recipe.getRecipeName()}" class="form-control"
                            id="inputRecipeName"
                            style="margin-bottom: 1rem;"></p>
 
                         <label for="inputRecipeDescription">Recipe Description</label>
-                        <p name="recipeDescription" class="form-control" id="inputRecipeDescription"
+                        <p class="form-control" id="inputRecipeDescription"
                            th:text="${recipe.getRecipeDescription()}"
                            style="margin-bottom: 1rem;"></p>
 
                         <label for="inputRecipeCategory">Recipe Category</label>
-                        <p name="recipeCategory" class="form-control" id="inputRecipeCategory"
+                        <p class="form-control" id="inputRecipeCategory"
                            th:text="${recipe.getRecipeCategory().getEnumText()}"
                            style="margin-bottom: 1rem;"></p>
 

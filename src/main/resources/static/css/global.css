@@ -31,11 +31,8 @@ html{
 }
 
 #rowtest {
-    background-image: url("/img/phoodLogo2.PNG");
     background-size: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
+    background: transparent url("/img/phoodLogo2.PNG") no-repeat center;
 }
 
 .header {
@@ -44,20 +41,17 @@ html{
 }
 
 .black-bar{
-    border-style:solid;
-    border-width:3px;
-    border-color: #6CA0DC;
+    border: 3px solid #6CA0DC;
 }
 
 button, input{
-    background-color: white;
     background-size: 75px;
-    background-position: top;
+    background: white top;
     border-style: ridge;
 }
 
 .image {
-    padding: 25px;
+    padding: 25px 0 25px 0;
 }
 
 .category-container {
