@@ -51,9 +51,9 @@ body {
     font-weight: 900;
 }
 
+
 .black-bar {
     border: 3px double #a8a8a8;
-    border-length: 100%;
 }
 
 button, input {
