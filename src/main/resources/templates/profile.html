@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 </head>
 <body class="grey-background">
@@ -27,8 +29,11 @@
                 <div>
                     <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
                     <img align="left" class="profileThumbnail thumbnail" src="/img/user.png"/>
-                    <h5 class="user-name" th:text="${username}">@ajreicha</h5>
+                    <h5 class="user-name" th:text="${'@' + username}">@ajreicha</h5>
                     <h3 class="full-name" th:text="${name}">Adam Reichanadter</h3>
+                    <p><span th:text="${user.getRecipeModels().size()}">87</span> Recipes &centerdot; <span
+                            th:text="${totalLikes}"></span> Quality Points &centerdot; <span
+                            th:text="${average}"></span> Average Rating</p>
                 </div>
             </div>
         </div>
@@ -50,8 +55,11 @@
                                         <div class="card-columns">
                                             <div th:each="recipe : *{category}" class="card">
                                                 <div class="card-block">
-                                                    <h4 class="card-title" th:text="*{recipe.getRecipeName()}">Card
+                                                    <h4 class="recipe-name card-title"
+                                                        th:text="*{recipe.getRecipeName()}">Card
                                                         title</h4>
+                                                    <span th:inline="text"><i class="star fa fa-star"
+                                                                              aria-hidden="true"></i> [[${recipe.getLikes()}]]</span>
                                                     <p class="card-text" th:text="*{recipe.getRecipeDescription()}">This
                                                         is
                                                         a longer
