@@ -25,6 +25,20 @@ public class ProfileController {
     @RequestMapping
     public String showProfile(Model model) {
         UserModel currentLoggedInUser = userService.getCurrentLoggedInUser();
+        model.addAttribute("user", currentLoggedInUser);
+        double totalLikesForUser = recipeService.totalLikesForUser(currentLoggedInUser);
+        int numberOfRecipes = currentLoggedInUser.getRecipeModels().size();
+
+        if (numberOfRecipes == 0) {
+            model.addAttribute("average", 0);
+        } else {
+            model.addAttribute("average", totalLikesForUser / numberOfRecipes);
+        }
+
+        model.addAttribute("totalLikes", totalLikesForUser);
+
+
+
         model.addAttribute("username", currentLoggedInUser.getUserUsername());
         model.addAttribute("name", String.format("%s %s %s", currentLoggedInUser.getUserFirstName(),
                 currentLoggedInUser.getUserMiddleInitial(),

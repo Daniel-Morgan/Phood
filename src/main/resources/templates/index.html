@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 </head>
 <body class="indexBody">
@@ -29,7 +31,8 @@
                     <div class="card-columns">
                         <div th:each="recipe : *{category}" class="card">
                             <div class="card-block">
-                                <h4 class="card-title" th:text="*{recipe.getRecipeName()}">Card title</h4>
+                                <h4 class="card-title recipe-name" th:text="*{recipe.getRecipeName()}">Card title</h4>
+                                <span th:inline="text"><i class="star fa fa-star" aria-hidden="true"></i> [[${recipe.getLikes()}]]</span>
                                 <p class="card-text" th:text="*{recipe.getRecipeDescription()}">This is a longer
                                     card
                                     with
@@ -42,7 +45,7 @@
                                 <a class="btn btn-outline-primary"
                                        th:href="@{/recipe?recipeID={path}(path=${recipe.getRecipeID()})}">
                                         View
-                                    </a>
+                                </a>
                             </div>
                         </div>
                     </div>

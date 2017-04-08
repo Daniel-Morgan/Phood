@@ -92,4 +92,12 @@ public class RecipeService {
         return userModel.getRecipeModels().stream().sorted((recipeModel, t1) -> t1.getLikes() - recipeModel.getLikes())
                 .limit(2).collect(Collectors.toList());
     }
+
+    public int totalLikesForUser(UserModel currentLoggedInUser) {
+        int totalLikes = 0;
+        for (RecipeModel recipeModel : currentLoggedInUser.getRecipeModels()) {
+            totalLikes += recipeModel.getLikes();
+        }
+        return totalLikes;
+    }
 }
