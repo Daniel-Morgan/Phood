@@ -45,7 +45,7 @@ public class UserAccountTests
     @Before
     public void setUp() throws Exception
     {
-        UserModel testUser = userRepository.findOne(TEST_ACCOUNT_ID).orElse(null);
+        UserModel testUser = userRepository.findOne(TEST_ACCOUNT_ID);
 
         if (testUser == null)
         {
@@ -77,7 +77,7 @@ public class UserAccountTests
         * 5. Check that the username matches our something random.
         * If it did, then the account was successfully edited and retrieved.
         */
-        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID).orElse(new UserModel());
+        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID);
 
         UUID randomUUID = UUID.randomUUID();
         userModel.setOther(randomUUID);
@@ -85,7 +85,7 @@ public class UserAccountTests
 
         UUID foundOther = null;
         try {
-            foundOther = userRepository.findOne(TEST_ACCOUNT_ID).orElseThrow((Supplier<Throwable>) () -> new UsernameNotFoundException("The user with that ID could not be located in the database.")).getOther();
+            foundOther = userRepository.findOne(TEST_ACCOUNT_ID).getOther();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class UserAccountTests
     @Test
     public void testFindByUsername() throws Exception
     {
-        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID).orElse(new UserModel());
+        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID);
         UserModel byUsername = userService.findByUsername(TEST_ACCOUNT_USERNAME);
         Assert.assertEquals(userModel, byUsername);
     }
@@ -103,7 +103,7 @@ public class UserAccountTests
     @Test
     public void testFindByEmail() throws Exception
     {
-        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID).orElse(new UserModel());
+        UserModel userModel = userRepository.findOne(TEST_ACCOUNT_ID);
         UserModel byEmail = userService.findByEmail(TEST_ACCOUNT_EMAIL);
         Assert.assertEquals(userModel, byEmail);
     }
