@@ -44,7 +44,7 @@ public class RecipeModel {
     @Enumerated(EnumType.STRING)
     private RecipeCategory recipeCategory;
 
-    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     @Transient
     private String categoryName;
 
