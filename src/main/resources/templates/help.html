@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Phood | Documentation</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+</head>
+<body>
+<nav th:replace="_navbar :: navbar"></nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="">Phood Documentation</h4>
+            <hr/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="list-group">
+                <a href="#welcome" class="list-group-item list-group-item-action">Welcome</a>
+                <a href="#account-create" class="list-group-item list-group-item-action">Creating an account</a>
+                <a href="#recipe-create" class="list-group-item list-group-item-action">Create a recipe</a>
+                <a href="#searching" class="list-group-item list-group-item-action">Searching for other recipes</a>
+                <a href="#home" class="list-group-item list-group-item-action ">Using the home page</a>
+                <a href="#recipe-view" class="list-group-item list-group-item-action">Viewing your recipes</a>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="row" id="welcome">
+                <div class="col-lg-12">
+                    <h5>Welcome</h5>
+                    <p>Welcome to Phood! This is the documentation page for information on how to use this website and
+                        perform many common tasks.</p>
+                    <h6>Contents</h6>
+                    <ul>
+                        <li>Creating an account: Learn about registering on Phood to be able to create and like
+                            recipes.
+                        </li>
+                        <li>Create a recipe: How to design your very own delicious dish, step by step.</li>
+                        <li>Searching for other recipes: How to find a particular recipe from a keyword.</li>
+                        <li>Using the home page: What you can find on the home page.</li>
+                        <li>Viewing your recipes: All the information on the recipe display page.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" id="account-create">
+                <div class="col-lg-12">
+                    <h5>Creating an account</h5>
+                    <p>You can create an account by navigating to our <a href="/register">registration page.</a></p>
+                </div>
+            </div>
+            <div class="row" id="recipe-create">
+                <div class="col-lg-12">
+                    <h5>Creating a recipe:</h5>
+                    <ol>
+                        <li><p>If you find a recipe that you'd like to share with others, locate the nav bar. It should
+                            be in the upper
+                            position of your page. In that nav-bar click on the button named "Create Recipe"</p></li>
+
+                        <li><p>You will need to insert a recipe name that suits that of your dish. Please keep in mind
+                            that this page will be made public
+                            so restrain from any profane words or dishes. Once you have inserted a name, go ahead and
+                            add a description that gives users
+                            an idea what your recipe will be such as tastes, and what events its good for.</p></li>
+
+                        <li><p>Once you've created your description select the category for which your recipe falls
+                            into, then go step by step for the directions to cook your meal. For other people's
+                            conveniences be as
+                            thorough as possible
+                            with your directions</p></li>
+
+                        <li><p>Once you've created a recipe add in all of the ingredient that will be required for your
+                            dish. The ingredient are listed in 3 columns,
+                            quantity, measurements, and description of what that ingredient is.</p></li>
+                    </ol>
+                    <strong>Example:</strong>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="font-weight-bold">1</span>
+                            </td>
+                            <td><span class="font-italic">Cup</span></td>
+                            <td><span
+                                    class="font-weight-bold">Milk</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Thank you for your time, if you'd liked to share a recipe please click <a
+                            href="recipe/new">here</a>.</p>
+                    <h5>Tips for creating a popular recipe:</h5>
+                    <ul>
+                        <li>Use capital letters in your recipe name</li>
+                        <li>The description is your time to shine, describe clearly and effectively what makes your
+                            recipe great. Include
+                            why others might like it.
+                        </li>
+                        <li>
+                            Do not use fractions. Phood uses decimals for quantity information since using many
+                            different measurement
+                            systems may confuse our users.
+                        </li>
+                        <li>
+                            Units should be in title case format. Eg. <strong>"Cups"</strong>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" id="searching">
+                <div class="col-lg-12">
+                    <h5>Searching for other recipes</h5>
+                    <p>You can search for any recipes that you or other users have created using the search bar at the
+                        top of the page.
+                        You can search using a</p>
+                    <ul>
+                        <li>Category Name</li>
+                        <li>Recipe Name</li>
+                        <li>Recipe Description</li>
+                        <li>Username</li>
+                    </ul>
+                    <p>and it will return you a list of relevant recipes. For example if you search for "chicken" then
+                        the results will look like <a href="/search?query=chicken">this.</a></p>
+                </div>
+            </div>
+            <div class="row" id="home">
+                <div class="col-lg-12">
+                    <h5>Using the home page</h5>
+                    <p>The <a href="/">home page</a> shows the top five recipes for each category based on our rating
+                        system. Each recipe is displayed in a card showing the name, description, creation date, and
+                        rating. You can click the "view" button to see the recipe in greater detail. There is a navbar
+                        at the top of the page that you can use to navigate to other pages like
+                    </p>
+                    <ul>
+                        <li>Create Recipe</li>
+                        <li>My Profile</li>
+                        <li>Search</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row" id="recipe-view">
+                <div class="col-lg-12">
+                    <h5>Viewing your recipes</h5>
+                    <p>When viewing your recipe, you will be presented with the recipe display page. At the top of the
+                        page, you will notice your recipe's title, its likes displayed next to a gold star, and the
+                        category
+                        that the recipe belongs to. On the right side of the page, you will find your username, your
+                        full
+                        name, and your top two recipes sorted by the most likes. Clicking on one of those recipes will
+                        take
+                        you to their associated display pages. The like and dislike buttons can be found on the left
+                        side of
+                        the page, and clicking one will add or subtract a like from the recipe, respectively. Underneath
+                        the
+                        title, number of likes, and the category, you will see a helpful description of the recipe.
+                        Below
+                        the description, the needed ingredients for the recipe are listed, displaying their quantity,
+                        units,
+                        and the name of the ingredient itself. Lastly, on the bottom of the page, the recipe preparation
+                        can
+                        be found, sufficiently explaining how to produce the desired recipe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Javascript Files-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+</body>
+</html>

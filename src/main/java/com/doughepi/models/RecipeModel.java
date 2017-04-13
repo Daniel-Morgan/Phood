@@ -23,6 +23,7 @@ public class RecipeModel {
     @Column(name = "recipe_id", length = 16)
     private UUID recipeID;
 
+    @IndexedEmbedded
     @ManyToOne(cascade = CascadeType.MERGE)
     private UserModel userModel;
 
@@ -44,7 +45,7 @@ public class RecipeModel {
     @Enumerated(EnumType.STRING)
     private RecipeCategory recipeCategory;
 
-    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
     @Transient
     private String categoryName;
 

@@ -37,7 +37,7 @@ public class SearchService {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(RecipeModel.class).get();
         org.apache.lucene.search.Query luceneQuery = queryBuilder.keyword().fuzzy().onFields("recipeName",
-                "recipeDescription", "categoryName").matching(query).createQuery();
+                "recipeDescription", "categoryName", "userModel.userUsername").matching(query).createQuery();
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, RecipeModel.class);
         List resultList = jpaQuery.getResultList();
 
