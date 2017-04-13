@@ -7,9 +7,9 @@
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/global.css"/>
 </head>
-<body class="loginBody">
+<body class="">
 <div id="loginform">
-    <div id="" class="container-fluid">
+    <div id="" class="container-fluid loginBody">
         <div id="rowTest" class="row">
             <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
             <div class="col-lg-4 offset-lg-4">
@@ -35,13 +35,13 @@
                                        name="password"
                                        required="required"/>
                             </div>
-                            <button class="button btn btn-success" type="submit">Login</button>
+                            <button class="button btn btn-default" type="submit">Login</button>
                         </form>
                         <form action="/" style="display: inline;">
-                            <button class="button btn btn-outline-danger" type="cancel">Cancel</button>
+                            <button class="button btn btn-default" type="cancel">Cancel</button>
                         </form>
                         <form action="/register" style="display: inline;">
-                            <input type="submit" class="button btn btn-primary" value="Create Account"/>
+                            <input type="submit" class="button btn btn-default" value="Create Account"/>
                         </form>
                     </div>
                 </div>
