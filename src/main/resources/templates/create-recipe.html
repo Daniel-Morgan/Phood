@@ -111,6 +111,7 @@
         });
 
         function duplicateAndAppend() {
+
             var $newIngredientRow = $ingredientTemplate.clone();
             $ingredientContainer.append($newIngredientRow);
             $newIngredientRow.attr({
@@ -129,6 +130,7 @@
 
             $newIngredientRow.show();
             index++;
+            count++;
         }
 
         function submit() {
@@ -177,7 +179,6 @@
         }
 
         duplicateAndAppend();
-        count++;
     })
 </script>
 
