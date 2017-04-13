@@ -24,19 +24,16 @@
     <div class="row">
         <div class="col-lg-2">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">Welcome</a>
-                <a href="#recipe-create" class="list-group-item list-group-item-action">Creating an account</a>
-                <a href="#" class="list-group-item list-group-item-action">Creating an account</a>
-                <a href="#" class="list-group-item list-group-item-action">Create a recipe</a>
-                <a href="#" class="list-group-item list-group-item-action">Searching for other recipes</a>
-                <a href="#" class="list-group-item list-group-item-action ">Using the home page</a>
-                <a href="#" class="list-group-item list-group-item-action">Viewing your recipes</a>
+                <a href="#welcome" class="list-group-item list-group-item-action">Welcome</a>
+                <a href="#account-create" class="list-group-item list-group-item-action">Creating an account</a>
+                <a href="#recipe-create" class="list-group-item list-group-item-action">Create a recipe</a>
+                <a href="#searching" class="list-group-item list-group-item-action">Searching for other recipes</a>
+                <a href="#home" class="list-group-item list-group-item-action ">Using the home page</a>
+                <a href="#recipe-view" class="list-group-item list-group-item-action">Viewing your recipes</a>
             </div>
         </div>
         <div class="col-lg-10">
-
-
-            <div class="row">
+            <div class="row" id="welcome">
                 <div class="col-lg-12">
                     <h5>Welcome</h5>
                     <p>Welcome to Phood! This is the documentation page for information on how to use this website and
@@ -53,13 +50,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="account-create">
                 <div class="col-lg-12">
                     <h5>Creating an account</h5>
                     <p>You can create an account by navigating to our <a href="/register">registration page.</a></p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="recipe-create">
                 <div class="col-lg-12">
                     <h5>Creating a recipe:</h5>
                     <ol>
@@ -124,7 +121,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="searching">
                 <div class="col-lg-12">
                     <h5>Searching for other recipes</h5>
                     <p>You can search for any recipes that you or other users have created using the search bar at the
@@ -140,7 +137,7 @@
                         the results will look like <a href="/search?query=chicken">this.</a></p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="home">
                 <div class="col-lg-12">
                     <h5>Using the home page</h5>
                     <p>The <a href="/">home page</a> shows the top five recipes for each category based on our rating
@@ -156,7 +153,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="recipe-view">
                 <div class="col-lg-12">
                     <h5>Viewing your recipes</h5>
                     <p>When viewing your recipe, you will be presented with the recipe display page. At the top of the
