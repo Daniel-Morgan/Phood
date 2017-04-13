@@ -25,6 +25,8 @@
         <div class="col-lg-2">
             <div class="list-group">
                 <a href="#recipe-create" class="list-group-item list-group-item-action">Creating an account</a>
+                <a href="#" class="list-group-item list-group-item-action">Welcome</a>
+                <a href="#" class="list-group-item list-group-item-action">Creating an account</a>
                 <a href="#" class="list-group-item list-group-item-action">Create a recipe</a>
                 <a href="#" class="list-group-item list-group-item-action">Viewing your recipes</a>
                 <a href="#" class="list-group-item list-group-item-action">Searching for other recipes</a>
@@ -37,16 +39,48 @@
 
             <div class="row">
                 <div class="col-lg-12">
+                    <h5>Welcome</h5>
+                    <p>Welcome to Phood! This is the documentation page for information on how to use this website and
+                    perform many common tasks.</p>
+                    <h6>Contents</h6>
+                    <ul>
+                        <li>Creating an account: Learn about registering on Phood to be able to create and like recipes.</li>
+                        <li>Create a recipe: How to design your very own delicious dish, step by step.</li>
+                        <li>Viewing your recipes: All the information on the recipe display page.</li>
+                        <li>Searching for other recipes: How to find a particular recipe from a keyword.</li>
+                        <li>Viewing your profile: What is displayed on your profile page.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
                     <h5>Creating an account</h5>
-                    <p>You can create an account by navigating to our <a href="/register">registration page.</a> You'll
-                        be required to choose a username, enter your email, a password, and some information about your
-                        identity such as name. After registering, you can log on to Phood by clicking <a href="/login">this
-                            link</a> or by clicking the login button on the navbar. Happy cooking!</p>
+                    <p>You can create an account by navigating to our <a href="/register">registration page.</a></p>
                 </div>
             </div>
-            <div class="row" id="recipe-create">
+            <div class="row">
                 <div class="col-lg-12">
-                    <h5>Creating a recipe:</h5>
+                    <div class="row" id="name-wrapper">
+                        <div class="col-lg-12">
+                            <div>
+                                <!--/*@thymesVar id="user" type="com.doughepi.models.UserModel"*/-->
+                                <img align="left" class="profileThumbnail thumbnail" src="/img/user.png"/>
+                                <h5 class="user-name">@ajreicha</h5>
+                                <h3 class="full-name">Adam Reichanadter</h3>
+                                <p><span>87</span> Recipes &centerdot; <span
+                                >25</span> Quality Points &centerdot; <span
+                                >2.5</span> Average Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <p><h3>*</h3>You will need to insert a recipe name that suits that of your dish. Please keep in mind that this page will be made public
+                        so restrain from any profane words or dishes. Once you have inserted a name, go ahead an add a description that gives users
+                        and idea what your recipe will be such as tastes, and what events its good for.</p>
+
+
+
+                <div class="col-lg-12">
+                     <h5>Creating a recipe:</h5>
                     <ol>
                         <li><p>If you find a recipe that you'd like to share with others, locate the nav bar. It should
                             be in the upper
@@ -82,9 +116,7 @@
                             <td><span class="font-weight-bold">1</span>
                             </td>
                             <td><span class="font-italic">Cup</span></td>
-                            <td><span
-                                    class="font-weight-bold">Beef Milk: Comes out of the teet of a cow. $60/gallon</span>
-
+                            <td><span class="font-weight-bold">Beef Milk: Comes out of the teet of a cow. $60/gallon</span>
                             </td>
                         </tr>
                         </tbody>
@@ -128,14 +160,9 @@
                         <li>Username</li>
                     </ul>
                     <p>and it will return you a list of relevant recipes.
+                        For example if you search for "chicken" then the results will look like <a href="/search?query=chicken">this.</a></p>
                         For example if you search for "chicken" then the results will look like <a
                                 href="/search?query=chicken">this.</a></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h5>Viewing your profile</h5>
-                    <p></p>
                 </div>
             </div>
             <div class="row">
@@ -151,6 +178,22 @@
                         <li>My Profile</li>
                         <li>Search</li>
                     </ul>
+                        For example if you search for "chicken" then the results will look like <a href="/search?query=chicken">this.</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5>Viewing your recipes</h5>
+                    <p>When viewing your recipe, you will be presented with the recipe display page. At the top of the
+                    page, you will notice your recipe's title, its likes displayed next to a gold star, and the category
+                    that the recipe belongs to. On the right side of the page, you will find your username, your full
+                    name, and your top two recipes sorted by the most likes. Clicking on one of those recipes will take
+                    you to their associated display pages. The like and dislike buttons can be found on the left side of
+                    the page, and clicking one will add or subtract a like from the recipe, respectively. Underneath the
+                    title, number of likes, and the category, you will see a helpful description of the recipe. Below
+                    the description, the needed ingredients for the recipe are listed, displaying their quantity, units,
+                    and the name of the ingredient itself. Lastly, on the bottom of the page, the recipe preparation can
+                    be found, sufficiently explaining how to produce the desired recipe.</p>
                 </div>
             </div>
         </div>
