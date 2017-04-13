@@ -23,6 +23,7 @@ public class RecipeModel {
     @Column(name = "recipe_id", length = 16)
     private UUID recipeID;
 
+    @IndexedEmbedded
     @ManyToOne(cascade = CascadeType.MERGE)
     private UserModel userModel;
 

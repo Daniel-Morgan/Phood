@@ -1,6 +1,7 @@
 package com.doughepi.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.search.annotations.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,6 +22,7 @@ public class UserModel {
     private UUID userID;
 
     //User login information.
+    @Field(index = org.hibernate.search.annotations.Index.YES, analyze = Analyze.YES, store = Store.NO)
     @Column(name = "user_username")
     private String userUsername;
 
