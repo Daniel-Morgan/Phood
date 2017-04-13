@@ -1,13 +1,24 @@
 .container-fluid {
-    height: 100%;
     padding-top: 80px;
 }
 
-.grey-background {
-    background-color: #eeeeee;
+body, html {
+    height: 100%;
 }
 
-.indexBody {
+#loginform, #rowtest {
+    height: 100%;
+}
+
+
+.profile-header {
+    overflow-x: hidden;
+    padding-top: 56px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.index-background {
     background: url("/img/indexBackground.jpg") no-repeat bottom fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -25,10 +36,6 @@
     color: #c2c2c2;
 }
 
-html {
-    height: 100%;
-    background-color: #eee;
-}
 
 .recipe-name {
     display: inline;
@@ -43,7 +50,7 @@ body {
 }
 
 #rowContainer {
-    margin-top: 25vh;
+    margin-top: 15vh;
 }
 
 .header {
@@ -69,6 +76,10 @@ button, input {
 .category-container {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.profile-category-container {
+    padding: 20px;
 }
 
 .category-name {
@@ -106,6 +117,7 @@ button, input {
 }
 
 .profile-container {
+
     border-radius: 5px;
     padding: 20px;
     background-color: white;
