@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Phood | Recipe management done the right way</title>
+
+    <!--CSS Files-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+
+</head>
+<body class="indexBody">
+
+<nav th:replace="_navbar :: navbar"></nav>
+<div class="container-fluid index-background">
+    <!--/*@thymesVar id="recipe" type="com.doughepi.models.RecipeModel"*/-->
+    <div th:each="category : ${categories}" class="row category-container">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="category-name" th:text="*{category.get(0).getRecipeCategory().getEnumText()}"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-columns">
+                        <div th:each="recipe : *{category}" class="card">
+                            <div class="card-block">
+                                <h4 class="card-title recipe-name" th:text="*{recipe.getRecipeName()}">Card title</h4>
+                                <span th:inline="text"><i class="star fa fa-star" aria-hidden="true"></i> [[${recipe.getLikes()}]]</span>
+                                <p class="card-text" th:text="*{recipe.getRecipeDescription()}">This is a longer
+                                    card
+                                    with
+                                    supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text">
+                                    <small class="text-muted" th:text="*{recipe.getCreationDate()}"></small>
+                                </p>
+
+                                <a class="btn btn-outline-primary"
+                                   th:href="@{/recipe?recipeID={path}(path=${recipe.getRecipeID()})}">
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Javascript Files-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+</body>
+</html>

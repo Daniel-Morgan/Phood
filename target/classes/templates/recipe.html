@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Phood | Recipe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link type="text/css" rel="stylesheet" href="/css/global.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+</head>
+<body>
+<nav th:replace="_navbar :: navbar"></nav>
+<!--/*@thymesVar id="recipe" type="com.doughepi.models.RecipeModel"*/-->
+<div>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-2">
+                <div class="list-group">
+                    <button id="like-button" type="button" class="list-group-item list-group-item-action">
+                        <span><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</span>
+                    </button>
+                    <button id="dislike-button" type="button" class="list-group-item list-group-item-action">
+                        <span><i class="fa fa-thumbs-down" aria-hidden="true"></i> Dislike</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="recipe-name" th:text="${recipe.getRecipeName()}">Recipe Name</h3>
+                        <span th:inline="text"><i class="star fa fa-star" aria-hidden="true"></i> [[${recipe.getLikes()}]]</span>
+                        <hr/>
+                        <p class="text-muted">Category: <span th:text="${recipe.getCategoryName()}"></span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5>Recipe Description</h5>
+                        <p><i class="fa fa-quote-left" aria-hidden="true"></i> <span
+                                th:text="${recipe.getRecipeDescription()}"></span> <i
+                                class="fa fa-quote-right" aria-hidden="true"></i></p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5>Ingredients</h5>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="ingredient : ${recipe.getIngredientModels()}">
+                                <td th:inline="text"><span class="font-weight-bold">[[${ingredient.getIngredientQuantity()}]]x</span>
+                                </td>
+                                <td th:inline="text"><span
+                                        class="font-italic">[[${ingredient.getIngredientUnit()}]]</span></td>
+                                <td th:inline="text"><span class="font-weight-bold">[[${ingredient.getIngredientName()}]]</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5>Recipe Preparation</h5>
+                        <p th:text="${recipe.getRecipePreparationInstructions()}"> Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="profile-container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 class="user-name" th:inline="text">
+                                @[[${recipe.getUserModel().getUserUsername()}]]</h5>
+                            <h3 th:text="${#strings.concat(recipe.getUserModel().getUserFirstName(), ' ', recipe.getUserModel().getUserMiddleInitial(),' ', recipe.getUserModel().getUserLastName())}"
+                                class="full-name">John J Doe</h3>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5>Top Recipes</h5>
+                            <ul class="list-unstyled">
+                                <!--/*@thymesVar id="recipe" type="com.doughepi.models.RecipeModel"*/-->
+                                <li th:each="recipe : ${topTwo}">
+
+                                    <a class=""
+                                       th:href="@{/recipe?recipeID={path}(path=${recipe.getRecipeID()})}"
+                                       th:text="${recipe.getRecipeName()}">
+                                    </a>
+                                    <span th:inline="text"><i class="star fa fa-star" aria-hidden="true"></i> [[${recipe.getLikes()}]]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script>
+    jQuery(document).ready(function () {
+        var $likeButton = $("#like-button");
+        var $dislikeButton = $("#dislike-button");
+        $likeButton.click(function () {
+            like();
+        });
+        $dislikeButton.click(function () {
+            dislike();
+        });
+        function like() {
+            var uuid = location.search.substring(1);
+            var like = localStorage.getItem(uuid);
+            if (like != "like") {
+                $.ajax({
+                    url: '/recipe/like' + location.search,
+                    method: 'post'
+                });
+                if (like == "null") {
+                    localStorage.setItem(uuid, "like");
+                } else if (like == "dislike") {
+                    localStorage.setItem(uuid, "null");
+                }
+            }
+        }
+
+        function dislike() {
+            var uuid = location.search.substring(1);
+            var like = localStorage.getItem(uuid);
+            if (like != "dislike") {
+                $.ajax({
+                    url: '/recipe/dislike' + location.search,
+                    method: 'post'
+                });
+                if (like == "null") {
+                    localStorage.setItem(uuid, "dislike");
+                } else if (like == "like") {
+                    localStorage.setItem(uuid, "null");
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
